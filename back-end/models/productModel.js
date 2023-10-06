@@ -1,11 +1,22 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
-    name: {
+    category: {
         type: String,
-        required: [true, "Pls provide a name for the item you want to list."],
-        minLength: 3,
-        maxLength: 50,
+        enum: {
+            values:[
+                "Formal Tops",
+                "Formal Bottoms",
+                "Causual Tops",
+                "Causual Bottoms",
+                "Denims",
+                "Traditional Wear",
+                "Children's wear",
+                "Accessories",
+                "Dresses"
+            ],
+            message: "{VALUE} is not supported."
+        }
     },
     description: {
         type: String,

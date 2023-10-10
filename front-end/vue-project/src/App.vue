@@ -1,17 +1,33 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import LoginRegisterForm from "./components/LoginRegisterForm.vue";
+import DashBoard from "./components/DashBoard.vue"
 
 export default {
   data() {
     return {
-      greetings : "Welcome genie!!"
+      loginStatus : false,
+      username: "",
     }
+  },
+  methods: {
+    changeLoginStatus(name){
+      this.loginStatus = !this.loginStatus;
+      this.username = name;
+    },
   },
   components: {
     NavBar,
-    LoginRegisterForm
-}
+    LoginRegisterForm,
+    DashBoard,
+  },
+  created() {
+    //check for jwt token.If it exists, set the login status to true and retrieve the username from local storage.
+    if(window.localStorage.getItem("token") && window.localStorage.getItem("user")){
+      this.username = window.localStorage.getItem("user");
+      this.loginStatus = true;
+    }
+  }
 }
 </script>
 
@@ -19,7 +35,7 @@ export default {
   <NavBar/>
   
 
-  <div class="container-fluid heroSection mt-5">
+  <div v-if="!loginStatus" class="container-fluid heroSection mt-5">
     <div class="row h-100">
       <div class="text-white ps-5 pe-0 gap-0 h-sm-25 col-sm-12 d-flex flex-column justify-content-start mb-4 align-items-center
       h-md-100 col-md-6 d-flex flex-md-column justify-content-md-center align-items-md-start">
@@ -34,10 +50,15 @@ export default {
         </p>
       </div>
       <div class="col-sm-12 col-md-6 h-100 d-md-flex flex-md-column justify-content-md-center">
-        <LoginRegisterForm/>
+        <LoginRegisterForm @userLoggedIn="changeLoginStatus"/>
       </div>
     </div>
   </div>  
+
+
+  <div v-else class="mt-5">
+    <DashBoard :currUser="username"/>
+  </div>
 
 
 

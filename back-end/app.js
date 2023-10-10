@@ -3,6 +3,7 @@ require("express-async-errors");
 const connectDB = require("./db/connect")
 const fileUpload = require("express-fileupload");
 require("dotenv").config();
+cors = require("cors");
 
 //setting up cloudinary config(API to host user product imgs on cloud)
 //May need to implement this in the fonrt-end
@@ -31,6 +32,7 @@ app.use(fileUpload({
     tempFileDir: "./tmp_images",
     limits: {fileSize: 1024 * 1024},
 }))
+app.use(cors());
 //parses data passed by client as json
 app.use(express.json());
 

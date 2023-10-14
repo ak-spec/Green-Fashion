@@ -13,8 +13,8 @@ const createProduct = async (req, res) => {
 
     //TO DO: the image url must be obtained from the uploadController
     const userId = req.user.userId;
-    const {name, description, size, gender, image, address} = req.body;
-    if(!name || !description || !size || !gender || !image || !address){
+    const {category, description, size, gender, image, address} = req.body;
+    if(!category || !description || !size || !gender || !image || !address){
         throw new errors.BadRequestError("Some details about the product is missing.");
     }
     const product = {...req.body, owner: userId};

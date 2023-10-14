@@ -10,7 +10,7 @@ const uploadProductImage = async(req, res) => {
     if(!(req.files.image.mimetype.startsWith("image"))){
         throw new errors.BadRequestError("Pls upload an image file.");
     }
-
+    console.log(req.files);
     const imgPath = req.files.image.tempFilePath;
     const result = await cloudinary.uploader.upload(imgPath, {
         use_filename: true, 

@@ -7,13 +7,14 @@ const productSchema = new mongoose.Schema({
             values:[
                 "Formal Tops",
                 "Formal Bottoms",
-                "Causual Tops",
-                "Causual Bottoms",
+                "Casual Tops",
+                "Casual Bottoms",
                 "Denims",
                 "Traditional Wear",
                 "Children's wear",
                 "Accessories",
-                "Dresses"
+                "Dresses",
+                "General"
             ],
             message: "{VALUE} is not supported."
         }
@@ -40,7 +41,7 @@ const productSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        required: [true, "Pls upload an image of the clothing item"],
+        required: [true, "Pls upload the url of the image of the clothing item"],
     },
     address: {
         type: String,

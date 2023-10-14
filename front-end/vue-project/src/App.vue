@@ -32,11 +32,11 @@ export default {
 </script>
 
 <template>
-  <NavBar/>
+  <NavBar @userLoggedOut="changeLoginStatus" :login-status="loginStatus"/>
   
 
-  <div v-if="!loginStatus" class="container-fluid heroSection mt-5">
-    <div class="row h-100">
+  <div class="container-fluid heroSection mt-5">
+    <div v-if="!loginStatus" class="row h-100">
       <div class="text-white ps-5 pe-0 gap-0 h-sm-25 col-sm-12 d-flex flex-column justify-content-start mb-4 align-items-center
       h-md-100 col-md-6 d-flex flex-md-column justify-content-md-center align-items-md-start">
         <h1>
@@ -53,12 +53,13 @@ export default {
         <LoginRegisterForm @userLoggedIn="changeLoginStatus"/>
       </div>
     </div>
+    <div v-else class="h-100">
+      <DashBoard :curr-user="username"/>
+    </div>
   </div>  
 
 
-  <div v-else class="mt-5">
-    <DashBoard :currUser="username"/>
-  </div>
+  
 
 
 
@@ -70,8 +71,6 @@ export default {
   height: 100vh;
   background-image: url("./assets/images/wad-background2.jpeg");
   background-size: cover;
-  /* background-repeat: repeat; */
-  
 }
 
 h1 {

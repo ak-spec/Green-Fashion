@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
                 "Casual Bottoms",
                 "Denims",
                 "Traditional Wear",
-                "Children's wear",
+                "Children's Wear",
                 "Accessories",
                 "Dresses",
                 "General"

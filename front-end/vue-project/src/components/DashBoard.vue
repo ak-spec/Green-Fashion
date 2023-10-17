@@ -2,6 +2,8 @@
 import UploadProduct from './UploadProduct.vue';
 import AllUserProducts from './AllUserProducts.vue';
 import PublicListings from './PublicListings.vue';
+import axios from 'axios';
+
 
 export default {
     props: {
@@ -9,7 +11,8 @@ export default {
     },
     data(){
         return {
-            currTab: "uploadProduct",
+            allUserProducts: [],
+            fetchAlluserProductsUrl: "http://localhost:3000/api/v1/products",
         }
     },
     components:{
@@ -18,8 +21,48 @@ export default {
     PublicListings,
 },
     methods: {
-        
-    }
+        addToAllUserProducts(newProduct){
+            this.allUserProducts.push(newProduct);
+        },
+        delistProduct(id) {
+            const token = window.localStorage.getItem("token");
+            axios.delete(`http://localhost:3000/api/v1/products/${id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then((res) => {
+                const product = res.data.deletedProduct;
+                if(product){
+                    const idx = this.allUserProducts.indexOf(product);
+                    this.allUserProducts.splice(idx, 1)
+                }
+            })
+        },
+        updateProduct(id) {
+            const token = window.localStorage.getItem("token");
+            axios.patch(`http://localhost:3000/api/v1/products/${id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then((res) => {
+                
+            })
+        }
+    },
+    mounted(){
+            const token = window.localStorage.getItem("token");
+            axios.get(this.fetchAlluserProductsUrl, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then((res) => {
+                this.allUserProducts = res.data.userProducts;
+            })
+            .catch((err) => console.log(err))
+        },
 }
 </script>
 
@@ -37,16 +80,16 @@ export default {
                     Let's do somtheing like a daily fact.<br>Can be in the form of a slideshow!
                 </div>
                 <div class="col-12">
-                    <UploadProduct/>
-                    <a class="btn btn-primary mx-3" href="#userProducts">Listed clothes</a>
+                    <UploadProduct @product-uploaded="addToAllUserProducts"/>
+                    <a class="btn btn-primary mx-3" href="#currUserProducts">Listed clothes</a>
                 </div>
                
             </div>
             
 
         </div>
-        <div id="userProducts">
-            <AllUserProducts />    
+        <div id="currUserProducts">
+            <AllUserProducts :all-user-products="allUserProducts" @product-deleted="delistProduct" @product-updated="updateProduct"/>    
         </div>
         <PublicListings />
     </div>

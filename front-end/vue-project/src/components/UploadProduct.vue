@@ -2,6 +2,7 @@
 import axios from "axios";
 
 export default {
+    emits: ["productUploaded"],
     data() {
         return {
             category: "",
@@ -14,6 +15,7 @@ export default {
             city: "",
             postalCode: "",
             country: "",
+            addressFromGeoCodeAPI: "",
             errors: [],
             uploadedProduct: {},
         }
@@ -35,6 +37,8 @@ export default {
                 if(res.data.status !== "OK" || res.data.results.length !== 1){
                     this.errors.push("Pls enter a valid/more specific address!");
                 }
+                this.addressFromGeoCodeAPI = res.data.results[0].formatted_address;
+
             })
             .catch((err) => {
                 console.log(err);
@@ -60,7 +64,7 @@ export default {
                         size: this.size, 
                         gender: this.gender, 
                         image: this.imgURL, 
-                        address: `${this.street} ${this.city} ${this.country} ${this.postalCode}`
+                        address: this.addressFromGeoCodeAPI
                     }, {
                         headers: {
                             "Authorization": `Bearer ${token}`,
@@ -69,6 +73,7 @@ export default {
                     .then((res) => {
                         if(res.data.createdProduct){
                             this.uploadedProduct = res.data.createdProduct;
+                            this.$emit("productUploaded", res.data.createdProduct);
                         }else{
                             this.errors.push("Something went wrong.Pls try to upload again.")
                         }

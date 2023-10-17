@@ -1,7 +1,7 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import LoginRegisterForm from "./components/LoginRegisterForm.vue";
-import DashBoard from "./components/DashBoard.vue"
+import DashBoard from "./components/DashBoard.vue";
 
 export default {
   data() {

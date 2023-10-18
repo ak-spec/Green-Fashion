@@ -2,6 +2,7 @@
 import UploadProduct from './UploadProduct.vue';
 import AllUserProducts from './AllUserProducts.vue';
 import PublicListings from './PublicListings.vue';
+import Footer from "./Footer.vue";
 import axios from 'axios';
 
 
@@ -19,6 +20,7 @@ export default {
     UploadProduct,
     AllUserProducts,
     PublicListings,
+    Footer
 },
     methods: {
         addToAllUserProducts(newProduct){
@@ -77,9 +79,9 @@ export default {
 </script>
 
 <template>
-    <div class="container-fluid pt-3 px-0 h-100">
-        <h1>Welcome {{ currUser }}!</h1>
-        <div class="container mt-3 p-0 h-100">
+    <div class="container-fluid pt-2 px-0 h-100">
+        <div class="container-fluid  py-0 px-5 h-100 heroSection">
+            <h1>Welcome {{ currUser }}!</h1>
             <div class="row">
                 <div class="col-12 my-2 my-sm-5 bg-dark text-white p-3 border border-dark rounded">
                     <!-- Probably a slideshow -->
@@ -89,22 +91,29 @@ export default {
                     <br><br>
                     Let's do somtheing like a daily fact.<br>Can be in the form of a slideshow!
                 </div>
-                <div class="col-12">
+                <div class="col-6  py-3">
                     <UploadProduct @product-uploaded="addToAllUserProducts"/>
+                    <a class="d-none d-md-inline-block btn btn-primary  mx-3" href="#currUserProducts">Listed clothes</a>
+                </div>
+                <div class="col-6 py-3 d-md-none">
                     <a class="btn btn-primary mx-3" href="#currUserProducts">Listed clothes</a>
                 </div>
-               
             </div>
-            
-
         </div>
-        <div id="currUserProducts">
+
+        <div id="currUserProducts" class="mt-3">
             <AllUserProducts :all-user-products="allUserProducts" @product-deleted="delistProduct" @product-updated="updateProduct"/>    
         </div>
         <PublicListings />
+        
     </div>
 </template>
 
 <style lang="css" scoped>
+.heroSection {
+  height: 100vh;
+  background-image: url("../assets/images/wad-background2.jpeg");
+  background-size: cover;
+}
 
 </style>

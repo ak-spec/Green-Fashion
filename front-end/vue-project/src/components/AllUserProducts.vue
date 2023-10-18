@@ -69,34 +69,34 @@
                             {{ product.description }}<br>
                             Collection Address: {{ product.address }}
                         </p>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-sm btn-primary"
+                                type="button" data-bs-toggle="collapse" :data-bs-target=" '#u' + product._id" aria-expanded="false" aria-controls="collapseForm"
+                                >
+                                    Update details
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-sm btn-danger" @click="delistProduct(product._id)">Delist Product</button>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="collapse col" :id=" 'u' + product._id">
+                                <form @submit.prevent="handleUpdateForm(product._id)">
+                                    <div>
+                                        <label for="description" class="form-label">New Description</label>
+                                        <input type="text" class="form-control" id="description" :placeholder="product.description" v-model="newDescription">
+                                    </div>
+                                    <div>
+                                        <label for="address" class="form-label">New Address</label>
+                                        <input type="text" class="form-control" id="address" :placeholder="product.address" v-model="newAddress">
+                                    </div>
+                                    <button class="btn btn-sm btn-warning mt-2" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body row ">
-                        <div class="col">
-                            <button class="btn btn-sm btn-primary"
-                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm" 
-                            aria-expanded="false" aria-controls="collapseForm"
-                            >
-                                Update details
-                            </button>
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-sm btn-danger" @click="delistProduct(product._id)">Delist Product</button>
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="collapse" id="collapseForm">
-                            <form @submit.prevent="handleUpdateForm(product._id)">
-                                <div>
-                                    <label for="description" class="form-label">New Description</label>
-                                    <input type="text" class="form-control" id="description" :placeholder="product.description" v-model="newDescription">
-                                </div>
-                                <div>
-                                    <label for="address" class="form-label">New Address</label>
-                                    <input type="text" class="form-control" id="address" :placeholder="product.address" v-model="newAddress">
-                                </div>
-                                <button class="btn btn-sm btn-warning mt-2" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>  
@@ -132,4 +132,5 @@
 .fixedImgHeight {
     height: 300px;
 }
+
 </style>

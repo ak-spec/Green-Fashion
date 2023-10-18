@@ -72,7 +72,7 @@ export default {
             })
             .catch((err) => {
                 const msg = err.message;
-                console.log(msg)
+                console.log(err)
             });
         }
     }

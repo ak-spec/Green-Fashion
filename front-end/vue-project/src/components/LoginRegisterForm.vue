@@ -81,6 +81,7 @@ export default {
 </script>
 
 <template>
+    <!-- Still have to do validation for login -->
     <div class="container w-75  h-75 d-flex flex-column justify-content-center align-items-center myform bg-dark text-white">
         <h4 class="text-center">{{ login ? "Login" : "Register" }}</h4>
         <form v-if="login" class="w-75 d-flex flex-column align-items-center" @submit.prevent="handleLogin" novalidate>

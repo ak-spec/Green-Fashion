@@ -38,56 +38,56 @@ export default {
                     this.errors.push("Pls enter a valid/more specific address!");
                 }
                 this.addressFromGeoCodeAPI = res.data.results[0].formatted_address;
-
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-
-            if(this.errors.length === 0){
-                //use formData object to send file data as body!!
-                const formData = new FormData();
-                formData.append("image", this.imgFile);
-                const token = window.localStorage.getItem("token");
-                axios.post("http://localhost:3000/api/v1/products/upload", formData, {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                        "Authorization": `Bearer ${token}`,
-                    }
-                })
-                .then((res) => {
-                    this.imgURL = res.data.image.src;
-                    //use the retrieved img url to send another post req to create a new product!
-                    axios.post("http://localhost:3000/api/v1/products", {
-                        category: this.category, 
-                        description: this.description, 
-                        size: this.size, 
-                        gender: this.gender, 
-                        image: this.imgURL, 
-                        address: this.addressFromGeoCodeAPI
-                    }, {
+                if(this.errors.length === 0){
+                    //use formData object to send file data as body!!
+                    const formData = new FormData();
+                    formData.append("image", this.imgFile);
+                    const token = window.localStorage.getItem("token");
+                    axios.post("http://localhost:3000/api/v1/products/upload", formData, {
                         headers: {
+                            "Content-Type": "multipart/form-data",
                             "Authorization": `Bearer ${token}`,
                         }
                     })
                     .then((res) => {
-                        if(res.data.createdProduct){
-                            this.uploadedProduct = res.data.createdProduct;
-                            this.$emit("productUploaded", res.data.createdProduct);
-                        }else{
-                            this.errors.push("Something went wrong.Pls try to upload again.")
-                        }
+                        this.imgURL = res.data.image.src;
+                        //use the retrieved img url to send another post req to create a new product!
+                        axios.post("http://localhost:3000/api/v1/products", {
+                            category: this.category, 
+                            description: this.description, 
+                            size: this.size, 
+                            gender: this.gender, 
+                            image: this.imgURL, 
+                            address: this.addressFromGeoCodeAPI
+                        }, {
+                            headers: {
+                                "Authorization": `Bearer ${token}`,
+                            }
+                        })
+                        .then((res) => {
+                            if(res.data.createdProduct){
+                                this.uploadedProduct = res.data.createdProduct;
+                                this.$emit("productUploaded", res.data.createdProduct);
+                            }else{
+                                this.errors.push("Something went wrong.Pls try to upload again.")
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                        })
+
                     })
                     .catch((err) => {
                         console.log(err)
                     })
 
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
 
-            }
+            
             
         },
         checkFile(e){

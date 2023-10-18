@@ -39,15 +39,25 @@ export default {
                 }
             })
         },
-        updateProduct(id) {
+        updateProduct(upDatedDetails) {
             const token = window.localStorage.getItem("token");
-            axios.patch(`http://localhost:3000/api/v1/products/${id}`, {
-                headers: {
-                    "Authorization": `Bearer ${token}`
+            axios.patch(`http://localhost:3000/api/v1/products/${upDatedDetails.id}`,
+                {
+                    description: upDatedDetails.newDesc,
+                    address: upDatedDetails.newAddress
+                }, 
+                {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
                 }
-            })
+            )
             .then((res) => {
-                
+                const replacedProduct = this.allUserProducts.find((value) => {
+                    return value._id === res.data.updatedProduct._id;
+                });
+                const idxOfReplacedProduct = this.allUserProducts.indexOf(replacedProduct);
+                this.allUserProducts.splice(idxOfReplacedProduct, 1, res.data.updatedProduct)
             })
         }
     },

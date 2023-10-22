@@ -25,6 +25,8 @@ const productsRouter = require("./routes/productRoute");
 const listingRouter = require("./routes/listingRoute");
 
 const app = express();
+app.use(cors());
+
 // filupload is middleware for handling file uploads.Uploaded
 // files can be accesses using req.files.(name given in the name attribute of input tag)
 app.use(fileUpload({
@@ -32,7 +34,6 @@ app.use(fileUpload({
     tempFileDir: "./tmp_images",
     limits: {fileSize: 1024 * 1024},
 }))
-app.use(cors());
 //parses data passed by client as json
 app.use(express.json());
 

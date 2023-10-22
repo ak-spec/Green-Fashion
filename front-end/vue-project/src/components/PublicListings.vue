@@ -1,5 +1,5 @@
 <script>
-import axios, { all } from 'axios';
+import axios from 'axios';
 
 export default {
   props: {
@@ -24,7 +24,7 @@ export default {
   created() {
     // Fetch all products
     this.getUserLocation();
-    axios.get("http://localhost:3000/api/v1/listings")
+    axios.get("http://localhost:3000/api/v1/listings/")
       .then((res) => {
         for(let product of res.data.listedProducts){
             if(this.isProductInCurrentUserProducts(product)){
@@ -81,6 +81,7 @@ export default {
             this.sortOnLocation();
         }else{
             this.isLiveSearch = true;
+            this.noProducts = false;
             this.matchedProducts = [];
             for(let product of this.allProducts){
                 const details = (product.description + product.category).toLowerCase();
@@ -119,8 +120,11 @@ export default {
                 }   
             }
             const destinationString = destinations.join("|");
-            axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${this.userLocation.latitude},${this.userLocation.longitude}&destinations=${destinationString}&key=AIzaSyAr_5GqoyEDg5MldRwiEBsVwn_6vy-Wooc`)
+            const url =`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${this.userLocation.latitude},${this.userLocation.longitude}&destinations=${destinationString}&key=AIzaSyAr_5GqoyEDg5MldRwiEBsVwn_6vy-Wooc`
+            axios.get(url)
             .then((res) => {
+                console.log(res.data)
+
                 const results = res.data.rows[0].elements;
                 for(let i=0; i < results.length; i++){
                     productArr[i]["distanceFromUser"] = results[i].distance.text;
@@ -130,6 +134,7 @@ export default {
                 })
                 this.productsSortedByLocation = productArr;
             })
+            .catch((err) => console.log(err))
         }
     },
 
@@ -186,7 +191,7 @@ export default {
                         <h5 class="card-title">Details:</h5>
                         <p class="card-text">
                             Size: {{ product.size }} Gender: {{ product.gender }}<br/>
-                            Desecription: <br/>{{ product.description }}<br/>
+                            Description: <br/>{{ product.description }}<br/>
                             Address: {{ product.address }}
                         </p>
                     </div>

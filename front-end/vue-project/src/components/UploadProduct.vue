@@ -141,10 +141,10 @@ export default {
                                     <label for="category" class="form-label">Category</label>
                                     <select class="form-control" id="category" v-model="category">
                                         <option value="General" selected>General</option>
-                                        <option value="Formal Bottoms">Formal bottoms</option>
-                                        <option value="Formal Tops">Formal Tops</option>
-                                        <option value="Casual Bottoms">Casual Bottoms</option>
-                                        <option value="Casual Tops">Casual Tops</option>
+                                        <option value="Formals Bottoms">Formal bottoms</option>
+                                        <option value="Formals Tops">Formal Tops</option>
+                                        <option value="Casuals Bottoms">Casual Bottoms</option>
+                                        <option value="Casuals Tops">Casual Tops</option>
                                         <option value="Denims">Denims</option>
                                         <option value="Traditional Wear">Tradional Wear</option>
                                         <option value="Children's Wear">Children</option>

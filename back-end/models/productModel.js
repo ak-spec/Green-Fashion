@@ -5,10 +5,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         enum: {
             values:[
-                "Formal Tops",
-                "Formal Bottoms",
-                "Casual Tops",
-                "Casual Bottoms",
+                "Formals Tops",
+                "Formals Bottoms",
+                "Casuals Tops",
+                "Casuals Bottoms",
                 "Denims",
                 "Traditional Wear",
                 "Children's Wear",

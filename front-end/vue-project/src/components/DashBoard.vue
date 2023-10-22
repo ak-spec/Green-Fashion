@@ -97,19 +97,19 @@ export default {
                 </div>
                 <div class="col-6  py-3">
                     <UploadProduct @product-uploaded="addToAllUserProducts"/>
-                    <a class="d-none d-md-inline-block btn btn-primary  mx-3" href="#currUserProducts" @click="toggleProductsView">{{ viewListedClothes ? "All Listings" : "Your Clothes" }}</a>
+                    <a class="d-none d-md-inline-block btn btn-primary  mx-3"  @click="toggleProductsView">{{ viewListedClothes ? "All Listings" : "Your Clothes" }}</a>
                 </div>
                 <div class="col-6 py-3 d-md-none">
-                    <a class="btn btn-primary mx-3" href="#currUserProducts" @click="toggleProductsView">{{ viewListedClothes ? "All Listings" : "Your Clothes"}}</a>
+                    <a class="btn btn-primary mx-3" @click="toggleProductsView">{{ viewListedClothes ? "All Listings" : "Your Clothes"}}</a>
                 </div>
             </div>
         </div>
 
-        <div v-if="viewListedClothes" id="currUserProducts" class="mt-3">
+        <div v-if="viewListedClothes" class="mt-3">
             <AllUserProducts :all-user-products="allUserProducts" @product-deleted="delistProduct" @product-updated="updateProduct"/>    
         </div>
         <div v-else>
-            <PublicListings :curr-user-products="allUserProducts"/>
+            <PublicListings :curr-user-products="allUserProducts" />
         </div>
         
     </div>

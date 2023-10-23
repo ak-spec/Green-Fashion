@@ -19,11 +19,11 @@ export default {
         }
     },
     components:{
-    UploadProduct,
-    AllUserProducts,
-    PublicListings,
-    Footer
-},
+        UploadProduct,
+        AllUserProducts,
+        PublicListings,
+        Footer
+    },
     methods: {
         addToAllUserProducts(newProduct){
             this.allUserProducts.push(newProduct);

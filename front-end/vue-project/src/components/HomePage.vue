@@ -1,5 +1,4 @@
 <script>
-import NavBar from "./NavBar.vue";
 import LoginRegisterForm from "./LoginRegisterForm.vue";
 import DashBoard from "./DashBoard.vue";
 import Footer from "./Footer.vue";
@@ -23,7 +22,6 @@ export default {
     }
   },
   components: {
-    NavBar,
     LoginRegisterForm,
     DashBoard,
     Footer,
@@ -40,7 +38,6 @@ export default {
 
 
 <template>
-    <NavBar />
 
     <div class="mt-5">
     <div v-if="!loginStatus" class="row heroSection">

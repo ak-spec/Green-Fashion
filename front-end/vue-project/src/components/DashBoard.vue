@@ -7,6 +7,7 @@ import axios from 'axios';
 
 
 export default {
+    emits: ["loggedOut"],
     props: {
         currUser: String,
     },
@@ -86,6 +87,7 @@ export default {
     <div class="container-fluid pt-2 px-0 h-100">
         <div class="container-fluid  py-0 px-5 h-100 heroSection">
             <h1>Welcome {{ currUser }}!</h1>
+            <button class="btn btn-primary me-5" @click="$emit('loggedOut')">Logout</button>
             <div class="row">
                 <div class="col-12 my-2 my-sm-5 bg-dark text-white p-3 border border-dark rounded">
                     <!-- Probably a slideshow -->
@@ -109,7 +111,7 @@ export default {
             <AllUserProducts :all-user-products="allUserProducts" @product-deleted="delistProduct" @product-updated="updateProduct"/>    
         </div>
         <div v-else>
-            <PublicListings :curr-user-products="allUserProducts" />
+            <PublicListings :curr-user-products="allUserProducts" :all-user-products="allUserProducts"/>
         </div>
         
     </div>

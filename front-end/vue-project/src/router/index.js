@@ -1,14 +1,26 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomePage from '../components/HomePage.vue';
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: HomeView
-    // },
+    {
+      path: '/',
+      name: 'HomePage',
+      component: HomePage
+    },
+    {
+      path : '/Upstyling',
+      name: 'Upstyling',
+      component: () => import('@/components/Upstyling.vue')
+    },
+    {
+      path : '/Salvation',
+      name: 'Salvation',
+      component: () => import('@/components/Salvation.vue')
+    },
+    
     // {
     //   path: '/about',
     //   name: 'about',
@@ -21,16 +33,7 @@ const router = createRouter({
     
    
 
-    {
-      path : '/Upstyling',
-      name: 'Upstyling',
-      component: () => import('@/components/Upstyling.vue')
-    },
-    {
-      path : '/Salvation',
-      name: 'Salvation',
-      component: () => import('@/components/Salvation.vue')
-    }
+    
   ]
 })
 

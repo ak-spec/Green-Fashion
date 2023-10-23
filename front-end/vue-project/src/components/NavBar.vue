@@ -3,24 +3,7 @@
 
 
 export default {
-    emits: ["userLoggedOut"],
-    props: {
-        loginStatus: Boolean
-    },
-    data() {
-        return {
-
-        }
-    },
-    methods: {
-        logUserOut() {
-            window.localStorage.removeItem("token");
-            window.localStorage.removeItem("user");
-            this.$emit("userLoggedOut");
-        },
-
-        
-    }
+   
 }
 
 </script>
@@ -49,7 +32,6 @@ export default {
 
                 </ul>
             </div>
-            <button v-if="loginStatus" class="btn btn-primary me-5" @click="logUserOut">Logout</button>
         </div>
     </nav>
 </template>

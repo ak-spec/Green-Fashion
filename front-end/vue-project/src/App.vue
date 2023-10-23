@@ -1,51 +1,27 @@
 <script>
-import NavBar from "./components/NavBar.vue";
-import LoginRegisterForm from "./components/LoginRegisterForm.vue";
-import DashBoard from "./components/DashBoard.vue";
-import Footer from "./components/Footer.vue";
-import Upstyling from "./components/Upstyling.vue";
+import NavBar from "./components/Navbar.vue";
 
 
 
 export default {
   data() {
     return {
-      loginStatus : false,
-      username: "",
+
     }
-  },
-  methods: {
-    changeLoginStatus(name){
-      this.loginStatus = !this.loginStatus;
-      this.username = name;
-    },
   },
   components: {
-    NavBar,
-    LoginRegisterForm,
-    DashBoard,
-    Footer,
-  },
-  created() {
-    //check for jwt token.If it exists, set the login status to true and retrieve the username from local storage.
-    if(window.localStorage.getItem("token") && window.localStorage.getItem("user")){
-      this.username = window.localStorage.getItem("user");
-      this.loginStatus = true;
-    }
+    NavBar
   }
 }
+
 </script>
 
 <template>
-  <NavBar @userLoggedOut="changeLoginStatus" :login-status="loginStatus"/>
-  <router-view >
-    
+  <NavBar />
+  <router-view ></router-view>
   
 
-  </router-view>
-  
-
-  <div class="mt-5">
+  <!-- <div class="mt-5">
     <div v-if="!loginStatus" class="row heroSection">
       <div class="text-white ps-5 pe-0 gap-0 h-sm-25 col-sm-12 d-flex flex-column justify-content-start mb-4 align-items-center
       h-md-100 col-md-6 d-flex flex-md-column justify-content-md-center align-items-md-start">
@@ -67,7 +43,7 @@ export default {
       <DashBoard :curr-user="username"/>
     </div>
   </div>  
-  <Footer/>
+  <Footer/> -->
 
 
   
@@ -75,14 +51,6 @@ export default {
 </template>
 
 <style scoped>
-.heroSection {
-  height: 100vh;
-  background-image: url("./assets/images/wad-background2.jpeg");
-  background-size: cover;
-}
 
-h1 {
-  margin-bottom: 0;
-}
 
 </style>

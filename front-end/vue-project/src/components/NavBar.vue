@@ -1,22 +1,9 @@
 <script>
 
-export default {
-    emits: ["userLoggedOut"],
-    props: {
-        loginStatus: Boolean
-    },
-    data() {
-        return {
 
-        }
-    },
-    methods: {
-        logUserOut() {
-            window.localStorage.removeItem("token");
-            window.localStorage.removeItem("user");
-            this.$emit("userLoggedOut");
-        }
-    }
+
+export default {
+   
 }
 
 </script>
@@ -24,7 +11,7 @@ export default {
 <template>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-with-shadow">
         <div class="container-fluid ms-5">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="../assets/images/logo.jpeg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
                 Green Fashion
             </a>
@@ -34,18 +21,17 @@ export default {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" style="color: green;" href="#">Upstyle</a>
+                        <router-link to="/Upstyling" class="nav-link" style="color: green;">Upstyling</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: green;" href="#">Find Salvation Armies</a>
+                        <router-link to="/Salvation" class="nav-link" style="color: green;">Find Salvation Armies</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: green;" href="#">About</a>
+                        <router-link to="/About" class="nav-link" style="color: green;">About</router-link>
                     </li>
 
                 </ul>
             </div>
-            <button v-if="loginStatus" class="btn btn-primary me-5" @click="logUserOut">Logout</button>
         </div>
     </nav>
 </template>

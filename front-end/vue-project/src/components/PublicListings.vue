@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import Card from './Card.vue';
 
 export default {
   props: {
@@ -152,6 +153,9 @@ export default {
     },
 
   },
+  components: {
+    Card,
+  }
 };
 </script>
 
@@ -184,53 +188,27 @@ export default {
         <!-- This will be shown when the user is just viewing all listed products and is not searchinh for anything specific -->
         <div class="row mt-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-3" v-if="!isLiveSearch && !noProducts && !filterByDistance">
             <div class="col"  v-for="product in paginatedProducts" :key="product._id">
-                <div class="card h-100 position-relative">
-                    <span v-if="product.isUserProduct === true" class="badge rounded-pill text-bg-success position-absolute m-2">Your Product!</span>
-                    <img :src="product.image" class="card-img-top fixedImgHeight" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Details:</h5>
-                        <p class="card-text">
-                            Size: {{ product.size }} Gender: {{ product.gender }}<br/>
-                            Description: <br/>{{ product.description }}<br/>
-                            Address: {{ product.address }}
-                        </p>
-                    </div>
-                </div>
+                
+                <Card :product="product" />
+
             </div>
         </div>
 
         <!-- This will be shown when the user is performing live search -->
         <div class="row mt-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-3" v-if="isLiveSearch && !noProducts && !filterByDistance">
             <div class="col"  v-for="product in matchedProducts" :key="product._id">
-                <div class="card h-100 position-relative">
-                    <img :src="product.image" class="card-img-top fixedImgHeight" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Details:</h5>
-                        <p class="card-text">
-                            Size: {{ product.size }} Gender: {{ product.gender }}<br/>
-                            Desecription: <br/>{{ product.description }}<br/>
-                            Address: {{ product.address }}
-                        </p>
-                    </div>
-                </div>
+               
+                <Card :product="product" />
+
             </div>
         </div>
 
         <!-- This will be displayed when filtering by distance is done -->
         <div class="row mt-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-3" v-if="filterByDistance && !noProducts">
             <div class="col"  v-for="product in productsSortedByLocation" :key="product._id">
-                <div class="card h-100 position-relative">
-                    <img :src="product.image" class="card-img-top fixedImgHeight" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Details:</h5>
-                        <p class="card-text">
-                            Size: {{ product.size }} Gender: {{ product.gender }}<br/>
-                            Desecription: <br/>{{ product.description }}<br/>
-                            Address: {{ product.address }}
-                            Distance: {{ product.distanceFromUser }}
-                        </p>
-                    </div>
-                </div>
+        
+                <Card :product="product" />
+
             </div>
         </div>
 
@@ -259,8 +237,7 @@ export default {
 
 <style lang="css" scoped>
 @import 'bootstrap-icons/font/bootstrap-icons.css';
-.fixedImgHeight {
-    height: 300px;
-}
+
+
 
 </style>

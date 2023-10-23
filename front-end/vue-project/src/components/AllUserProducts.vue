@@ -10,7 +10,8 @@
             return {
                 newDescription: "",
                 newAddress: "",
-                errors: []
+                errors: [],
+                
             }
         },
         methods: {
@@ -62,11 +63,11 @@
         <h2 class="text-success mb-4">Your Clothes!!</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-4">
             <div class="col" v-for="product in allUserProducts" :key="product._id">
-                <div class="card h-100">
+                <div class="card h-100 ">
                     <img :src="product.image" class="card-img-top fixedImgHeight" alt="img can't be loaded">
                     <div class="card-body">
                         <p class="card-text">
-                            {{ product.description }}<br>
+                            {{ product.description > 50 ? product.description : product.description.slice(0, 50) + "..." }}<br>
                             Collection Address: {{ product.address }}
                         </p>
                         <div class="row">

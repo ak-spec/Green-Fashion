@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fawmi/vue-google-maps": "^0.9.79",
     "@googlemaps/js-api-loader": "^1.16.2",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
@@ -16,7 +17,8 @@
     "bootstrap-icons": "^1.11.1",
     "bootstrap-vue": "^2.23.1",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "vue-router": "^4.2.4",
+    "vue3-google-map": "^0.18.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.3.4",

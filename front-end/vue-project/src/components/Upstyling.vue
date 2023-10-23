@@ -2,6 +2,7 @@
 
     import axios from 'axios';
     
+    
 
 
     // youtube queries from api docs
@@ -308,13 +309,16 @@
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                <a class="nav-link"  href="https://www.instagram.com/"><img src="https://p7.hiclipart.com/preview/477/609/118/logo-computer-icons-clip-art-instagram-logo-thumbnail.jpg" width="20" height="20"></a>
+                <a class="nav-link"  href="https://www.facebook.com/"><ion-icon style="width:30px; height:30px" name="logo-facebook"></ion-icon></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://www.facebook.com/"><img src="https://www.facebook.com/images/fb_icon_325x325.png" width="20" height="20"></a>
+                <a class="nav-link" href="https://www.instagram.com/"><ion-icon style="width:30px; height:30px" name="logo-instagram">"></ion-icon></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://web.telegram.org/"><img src="https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/icy14hwiqs3uxvip8fsn" width="20" height="20"></a>
+                <a class="nav-link" href="https://sg.linkedin.com/"><ion-icon style="width:30px; height:30px" name="logo-linkedin"></ion-icon></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://twitter.com/?lang=en"><ion-icon style="width:30px; height:30px" name="logo-twitter"></ion-icon></a>
             </li>
             </ul>
         </div>

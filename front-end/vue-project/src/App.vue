@@ -3,6 +3,8 @@ import NavBar from "./components/NavBar.vue";
 import LoginRegisterForm from "./components/LoginRegisterForm.vue";
 import DashBoard from "./components/DashBoard.vue";
 import Footer from "./components/Footer.vue";
+import Upstyling from "./components/Upstyling.vue";
+
 
 
 export default {
@@ -22,7 +24,7 @@ export default {
     NavBar,
     LoginRegisterForm,
     DashBoard,
-    Footer
+    Footer,
   },
   created() {
     //check for jwt token.If it exists, set the login status to true and retrieve the username from local storage.
@@ -36,6 +38,11 @@ export default {
 
 <template>
   <NavBar @userLoggedOut="changeLoginStatus" :login-status="loginStatus"/>
+  <router-view >
+    
+  
+
+  </router-view>
   
 
   <div class="mt-5">

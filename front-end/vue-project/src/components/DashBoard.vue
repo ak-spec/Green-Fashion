@@ -2,7 +2,6 @@
 import UploadProduct from './UploadProduct.vue';
 import AllUserProducts from './AllUserProducts.vue';
 import PublicListings from './PublicListings.vue';
-import Footer from "./Footer.vue";
 import axios from 'axios';
 
 
@@ -22,7 +21,6 @@ export default {
         UploadProduct,
         AllUserProducts,
         PublicListings,
-        Footer
     },
     methods: {
         addToAllUserProducts(newProduct){

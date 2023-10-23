@@ -1,7 +1,6 @@
 <script>
 import LoginRegisterForm from "./LoginRegisterForm.vue";
 import DashBoard from "./DashBoard.vue";
-import Footer from "./Footer.vue";
 
 export default {
     data() {
@@ -24,7 +23,6 @@ export default {
   components: {
     LoginRegisterForm,
     DashBoard,
-    Footer,
   },
   created() {
     //check for jwt token.If it exists, set the login status to true and retrieve the username from local storage.
@@ -61,7 +59,6 @@ export default {
       <DashBoard :curr-user="username" @logged-out="logUserOut"/>
     </div>
   </div>  
-  <Footer/>
 
 </template>
 

@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar.vue";
 import LoginRegisterForm from "./components/LoginRegisterForm.vue";
 import DashBoard from "./components/DashBoard.vue";
 import Footer from "./components/Footer.vue";
-import Upstyling from "./components/Upstyling.vue";
+// import Upstyling from "./components/Upstyling.vue";
 
 
 
@@ -77,7 +77,7 @@ export default {
 <style scoped>
 .heroSection {
   height: 100vh;
-  background-image: url("./assets/images/wad-background2.jpeg");
+  background-image: url("./assets/images/fashion_picture.png");
   background-size: cover;
 }
 

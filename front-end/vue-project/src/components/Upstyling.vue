@@ -1,6 +1,7 @@
 <script>
 
     import axios from 'axios';
+    import Footer from "./Footer.vue"
     
     
 
@@ -25,6 +26,9 @@
             }
         },
 
+        components : {
+            Footer
+        },
         
 
         methods: {
@@ -297,9 +301,9 @@
         </div>
     </div>
 
-    
+    <Footer></Footer>
        
-
+<!-- 
     <div class="card text-center" id="socials">
         <div class="card-body">
             <h5 class="card-title">Found something you like?</h5>
@@ -323,7 +327,7 @@
             </ul>
         </div>
         
-    </div>
+    </div> -->
     
 
     

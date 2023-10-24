@@ -43,10 +43,9 @@ export default {
                     <li class="nav-item">
                         <router-link to="/Salvation" class="nav-link" style="color: green;">Find Salvation Armies</router-link>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <router-link to="/About" class="nav-link" style="color: green;">About</router-link>
-                    </li>
-
+                    </li> -->
                 </ul>
             </div>
             <button v-if="loginStatus" class="btn btn-primary me-5" @click="logUserOut">Logout</button>

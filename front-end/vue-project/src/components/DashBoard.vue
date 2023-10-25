@@ -37,7 +37,9 @@ export default {
             .then((res) => {
                 const product = res.data.deletedProduct;
                 if(product){
-                    const idx = this.allUserProducts.indexOf(product);
+                    //objects are compared by reference in js;so using "indexOf" and "includes" when 
+                    //tryig to find the index of an object in an array of objects will not work.
+                    const idx = this.allUserProducts.findIndex((item) => item._id === product._id);
                     this.allUserProducts.splice(idx, 1)
                 }
             })
@@ -72,7 +74,6 @@ export default {
             'X-Api-Key': '5qoHpSYqEdEgzsvyUqyjAA==w4E4yBMu2nmHIlEO'
         }})
         .then((res) => {
-            console.log(res.data)
             this.quote.author = res.data[0].author
             this.quote.text = res.data[0].quote
 

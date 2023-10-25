@@ -35,7 +35,7 @@ export default {
             axios.get(url)
             .then((res) => {
                 if(res.data.status !== "OK" || res.data.results.length !== 1){
-                    this.errors.push("Pls enter a valid/more specific address!");
+                    this.errors.push("Can't resolve address!Pls give a more specific/valid one.");
                 }
                 this.addressFromGeoCodeAPI = res.data.results[0].formatted_address;
                 if(this.errors.length === 0){
@@ -191,7 +191,7 @@ export default {
 
                                 <div class="col-12 col-md-8 mb-3">
                                     <label for="street" class="form-label">Enter Your Street</label>
-                                    <input type="text" class="form-control" id="street" placeholder="street name" v-model="street">
+                                    <input type="text" class="form-control" id="street" placeholder="e.g 12-34 6 Holland Close" v-model="street">
                                 </div>
 
                                 <div class="col-12 col-md-4 mb-3">
@@ -237,11 +237,10 @@ export default {
                             </ul>
                             <div v-else >
                                 <p class="text-success">Product uploaded!</p> 
-                                {{ uploadedProduct }}
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-success" data-bs-target="#uploadForm" data-bs-toggle="modal">Back to form</button>
+                            <button class="btn btn-success" data-bs-target="#uploadForm" data-bs-toggle="modal" @click="errors = []" v-if="errors.length > 0">Back to form</button>
                         </div>
                     </div>
                 </div>

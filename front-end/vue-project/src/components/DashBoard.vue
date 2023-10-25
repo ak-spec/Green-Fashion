@@ -132,7 +132,7 @@ export default {
 <style lang="css" scoped>
 .heroSection {
   height: 100vh;
-  background-image: url("../assets/images/wad-background2.jpeg");
+  background-image: url("../assets/images/fashion_picture.png");
   background-size: cover;
 }
 

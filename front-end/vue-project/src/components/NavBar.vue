@@ -26,9 +26,10 @@ export default {
                     <li class="nav-item">
                         <router-link to="/Salvation" class="nav-link" style="color: green;">Find Salvation Armies</router-link>
                     </li>
-                    <!-- <li class="nav-item">
-                        <router-link to="/About" class="nav-link" style="color: green;">About</router-link>
-                    </li> -->
+                    <li class="nav-item">
+                        <router-link to="/Chat" class="nav-link" style="color: green;">Chat</router-link>
+                    </li>
+
                 </ul>
             </div>
         </div>

@@ -23,6 +23,7 @@ const authMiddleWare = require("./middleware/auth");
 const authRouter = require("./routes/authRoute");
 const productsRouter = require("./routes/productRoute");
 const listingRouter = require("./routes/listingRoute");
+const chatRouter = require("./routes/chatRoute")
 
 const app = express();
 app.use(cors());
@@ -45,6 +46,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/products", authMiddleWare, productsRouter);
 app.use("/api/v1/listings", listingRouter);
+app.use("/api/v1/chat", chatRouter);
 
 //middlewares
 app.use(notFoundMiddleWare);

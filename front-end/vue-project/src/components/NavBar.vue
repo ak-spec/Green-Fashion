@@ -3,24 +3,7 @@
 
 
 export default {
-    emits: ["userLoggedOut"],
-    props: {
-        loginStatus: Boolean
-    },
-    data() {
-        return {
-
-        }
-    },
-    methods: {
-        logUserOut() {
-            window.localStorage.removeItem("token");
-            window.localStorage.removeItem("user");
-            this.$emit("userLoggedOut");
-        },
-
-        
-    }
+   
 }
 
 </script>
@@ -43,12 +26,12 @@ export default {
                     <li class="nav-item">
                         <router-link to="/Salvation" class="nav-link" style="color: green;">Find Salvation Armies</router-link>
                     </li>
-                    <!-- <li class="nav-item">
-                        <router-link to="/About" class="nav-link" style="color: green;">About</router-link>
-                    </li> -->
+                    <li class="nav-item">
+                        <router-link to="/Chat" class="nav-link" style="color: green;">Chat</router-link>
+                    </li>
+
                 </ul>
             </div>
-            <button v-if="loginStatus" class="btn btn-primary me-5" @click="logUserOut">Logout</button>
         </div>
     </nav>
 </template>

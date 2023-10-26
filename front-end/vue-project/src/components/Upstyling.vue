@@ -301,7 +301,6 @@
         </div>
     </div>
 
-    <Footer></Footer>
        
 <!-- 
     <div class="card text-center" id="socials">

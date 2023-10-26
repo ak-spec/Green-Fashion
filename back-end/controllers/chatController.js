@@ -15,7 +15,7 @@ const getResponse = async (req, res) => {
         messages: [
           {
             "role": "system",
-            content: "You are a humble assistant who can answer questions only about sustainable fashion or recycling clothes."
+            content: "You are a humble assistant who can answer questions only about sustainable fashion or recycling clothes.Your answers must be in point form."
           },
           {
             "role": "user",
@@ -24,9 +24,7 @@ const getResponse = async (req, res) => {
         ],
         temperature: 1,
         max_tokens: 256,
-        top_p: 1,
         frequency_penalty: 0,
-        presence_penalty: 0,
       });
       const msg = response.choices[0].message.content;
       res.status(StatusCodes.OK).json({response: msg})

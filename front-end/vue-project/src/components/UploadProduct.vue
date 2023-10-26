@@ -22,6 +22,15 @@ export default {
     },
     methods: {
         async validateInput() {
+            if(!this.category){
+                this.errors.push("Pls choose a category.");
+            }
+            if(!this.gender){
+                this.errors.push("Pls select a gender.");
+            }
+            if(!this.size){
+                this.errors.push("Pls select a size.");
+            }
             if(!this.imgFile){
                 this.errors.push("Pls choose a file to upload.");
             }

@@ -12,8 +12,8 @@ export default {
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-with-shadow">
         <div class="container-fluid ms-5">
             <a class="navbar-brand" href="/">
-                <img src="../assets/images/logo.jpeg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
-                Green Fashion
+                <img src="../assets/images/environmentally-friendly.png" alt="Logo" width="55" height="55"><h2 class="title" style="margin-top: 15px;font-weight: 600;">Green Fashion</h2>
+                
             </a>
             <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -56,12 +56,12 @@ export default {
 .menu ul{
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding-left: 20px;
   text-align: center;
 }
 .menu li{
   display: inline-block;
-  margin: 15px;
+  margin: 7px;
 }
 .menu a{
   font-size: 22px;
@@ -94,4 +94,34 @@ export default {
 .menu-1 a:hover::before{
   transform-origin: 0 50%;
 }
+
+.title
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #30f808 0%,
+    #06c455 29%,
+    #f0749d 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 25px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+
 </style>

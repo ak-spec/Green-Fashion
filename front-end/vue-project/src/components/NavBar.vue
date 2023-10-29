@@ -43,7 +43,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
 .navbar-with-shadow {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -88,7 +88,7 @@ export default {
   transform: scale3d(1,1,1);
 }
 .menu-1 a::before{
-  background: #2f9202;
+  background: #36a702;
   transform-origin: 100% 50%;
 }
 .menu-1 a:hover::before{

@@ -8,14 +8,18 @@
         <strong>Destination Address:</strong> {{ destinationAddress }}<br>
         <strong>Distance:</strong> {{ distance }}<br>
         <strong>Duration:</strong> {{ duration }}<br>
-        <p v-if="directions">Directions:</p>
-        <pre v-if="directions" v-for="(step, index) in directions.steps" :key="index">{{ step.html_instructions }}</pre>
+        <p v-if="directions"><b>Directions:</b></p>
+        <div class="directions-scroll">
+        <ol v-if="directions">
+        <li v-for="(step, index) in directions.steps" :key="index">{{step.html_instructions}}</li>
+        </ol>
+    </div>
     </div>
     
-    <GoogleMap id="map" v-bind:api-key='apiKey' style="width: 1000px; height: 550px;margin:0" :center="coordinates" :zoom="8">
+    <GoogleMap id="map" v-bind:api-key='apiKey' style="width: 1000px; height: 600px;margin: 0;" :center="coordinates" :zoom="8">
         <CustomMarker class="mymarker" :options="{ position: coordinates  }">
             <div style="text-align: center">
-                <div style="font-size: 1.125rem; color: red; font-weight: bold;">My Location</div>
+                <div style="font-size: 1.125rem; color: rgb(25, 0, 255); font-weight: bold;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">My Location</div>
                 <img src="../assets/images/current_location.png" width="30" height="30" style="margin-top: 8px" />
             </div>
         </CustomMarker>
@@ -63,7 +67,7 @@
           params: {
             origin: `${origin.lat},${origin.lng}`,
             destination: `${destination.lat},${destination.lng}`,
-            key: "api",
+            key: "AIzaSyAMPEA8sJ9zhXSrzcwB3Z6dc5a2y2ysILk",
           },
         })
         .then((response) => {
@@ -97,7 +101,7 @@
     
         data() {
             return {
-                apiKey : "api", 
+                apiKey : "AIzaSyAMPEA8sJ9zhXSrzcwB3Z6dc5a2y2ysILk", 
                 coordinates : {
                     lat: 1.290270,
 		            lng: 103.851959,
@@ -155,10 +159,33 @@
 }
 
 .directions-info {
-  background-color: yellow;
+  background-color: rgb(126, 126, 218);
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   z-index: 1;
+  position: relative;
+  height: 600px;
+  width:400px;
+  color:white;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
+.directions-scroll {
+    max-height: 400px; 
+    overflow-y: auto; 
+    &::-webkit-scrollbar {
+        width: 7px; /* Default thin width */
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: blue;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}
+.entirebody{
+    background-color: black;
+}
+
 </style>

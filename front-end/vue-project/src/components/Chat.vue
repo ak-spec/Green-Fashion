@@ -13,6 +13,9 @@ export default {
     },
     methods: {
         fetchResponse(){
+            if(this.answers.length === 4){
+                    this.answers.shift();
+            }
             this.answers.push("Loading...Thank you for your patience");
             this.isLoading = true;
 
@@ -23,7 +26,9 @@ export default {
                 const idx = this.answers.indexOf("Loading...");
                 this.answers.splice(idx, 1)
                 this.isLoading = false;
+                
                 this.answers.push(res.data.response);
+                
             })
             .catch((err) => {
                 console.log(err)
@@ -42,7 +47,7 @@ export default {
         <div style="background-color: rgb(45, 132, 95);" class="row mb-3 rounded p-5">
             <div class="col-12">
                 <p v-if="answers" v-for="(answer, index) in answers" 
-                class="bg-light border rounded p-2" 
+                class="bg-light border rounded p-2  overflow-scroll" 
                 :class="{'loading-text': isLoading && index === answers.length - 1, 'pulsating': isLoading && index === answers.length - 1}"
                 >
                     {{ answer }}
@@ -96,5 +101,8 @@ export default {
   }
 }
 
+p {
+    height: 100px;
+}
 
 </style>

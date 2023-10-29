@@ -6,12 +6,12 @@
 </template>
 
 <script>
-	import GoogleMaps from './Map.vue'
+	import Map from './Map.vue'
 
 	export default {
 		name : 'Salvation',
 		components : {
-			GoogleMaps
+			Map
 		}
 	}
 

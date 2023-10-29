@@ -63,7 +63,7 @@
           params: {
             origin: `${origin.lat},${origin.lng}`,
             destination: `${destination.lat},${destination.lng}`,
-            key: "AIzaSyAMPEA8sJ9zhXSrzcwB3Z6dc5a2y2ysILk",
+            key: "api",
           },
         })
         .then((response) => {
@@ -97,7 +97,7 @@
     
         data() {
             return {
-                apiKey : "AIzaSyAMPEA8sJ9zhXSrzcwB3Z6dc5a2y2ysILk", 
+                apiKey : "api", 
                 coordinates : {
                     lat: 1.290270,
 		            lng: 103.851959,

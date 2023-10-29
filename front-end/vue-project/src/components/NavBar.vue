@@ -88,7 +88,7 @@ export default {
   transform: scale3d(1,1,1);
 }
 .menu-1 a::before{
-  background: #E91E63;
+  background: #2f9202;
   transform-origin: 100% 50%;
 }
 .menu-1 a:hover::before{

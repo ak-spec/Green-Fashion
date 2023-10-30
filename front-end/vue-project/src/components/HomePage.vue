@@ -65,7 +65,10 @@ export default {
 <style lang="css" scoped>
 .heroSection {
   height: 100vh;
+  object-fit: cover;
   background-image: url("../assets/images/fashion_picture.png");
   background-size: cover;
-}
+  background-repeat: no-repeat;
+  background-position: center center;
+} 
 </style>

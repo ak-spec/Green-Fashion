@@ -7,7 +7,7 @@ export default {
 
 
 <template>
-    <div class="footer container-fluid bg-dark">
+    <div class="footer container-fluid background ">
 <!--        
             <div class="wave" id="wave1"></div>
             <div class="wave" id="wave2"></div>
@@ -16,22 +16,20 @@ export default {
         
         <div class=" row flex-column flex-md-row pt-3">
             <ul class="social_icon">
-                    <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
-                    <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                    <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-                    <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61552721978267"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                    <li><a href="https://www.instagram.com/greenfashion638/"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                    <li><a href="https://www.linkedin.com/in/green-fashion-7217a9298/"><ion-icon name="logo-linkedin"></ion-icon></a></li>
             </ul>
         </div>
-        <div class="row p-0">
+        <!-- <div class="row p-0">
             <div class="col text-white">
                 <ul class="menu">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
                     <li><a href="#">Team</a></li>
                     <li><a href="#">Contact</a></li>
                    
-                </ul>
+                </ul> -->
                 <!-- <h3>About Us</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa nam, saepe voluptates delectus praesentium ut eaque, est vitae, sunt ex sed. Officiis exercitationem nostrum laborum, magni natus a est veniam.</p> -->
                 <!-- <ul class="sci d-flex">
@@ -40,7 +38,7 @@ export default {
                     <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
                     <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
                 </ul> -->
-            </div>
+            <!-- </div> -->
             <!-- <div class="col text-white">
                 Creators
             </div>
@@ -48,9 +46,9 @@ export default {
                 Find Out More
             </div>
             <div class="w-100"></div> -->
-        </div>
+        <!-- </div> -->
         <div class="d-flex justify-content-center pb-3">
-            <p class="text-white my-0">&copy; 2023 GreenFashion | All Rights Reserved.</p>
+            <p class="text-white my-0">&copy; 2023 Green Fashion | All Rights Reserved.</p>
         </div>
 
     </div>
@@ -88,7 +86,7 @@ export default {
     .footer .social_icon li a:hover { 
         transform: translateY(-10px);
     }
-    .footer .menu li a{ 
+    /* .footer .menu li a{ 
         font-size: 1.3em;
         color: #fff;
         margin: 0 10px;
@@ -99,7 +97,7 @@ export default {
 
     .footer .menu li a:hover {
         opacity: 1;
-    }   
+    }    */
 
     /* .footer .waves {
         position: absolute;
@@ -110,4 +108,29 @@ export default {
         background-color: #f00
     } */
 
+
+    .background {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+
+        background-image: linear-gradient(170deg, #D6BCB1, #AB8574);
+        background-size: 4000% 1000%;
+        animation: gradient-animation 12s infinite;
+        animation-timing-function: linear;
+    }
+
+    @keyframes gradient-animation {
+    0% {
+        /* Continue adjusting this 
+           position based on your bg size so the start and end 
+           of your animation will line up and be a seamless loop */
+        background-position: 70% 70%;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+    
 </style>

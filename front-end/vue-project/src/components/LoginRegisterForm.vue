@@ -108,7 +108,14 @@ export default {
                 <input type="password" class="form-control" id="userPassword" placeholder="password" v-model="loginDetails.password"> -->
             </div>
 
-            <button class="btn btn-primary my-2">Start Sharing!</button>
+            <!-- <button class="btn btn-primary my-2">Start Sharing!</button> -->
+            <button type='submit' id="share">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Start Sharing! 
+            </button>
             <small class="mt-3">
                 Do not have an account?
                 <span style="text-decoration: underline; cursor: pointer;" @click="toggleStaus">
@@ -179,7 +186,15 @@ export default {
                 <p v-if="RegisterDetails.passwordNotMatch" style="color: red;">Passwords do not match!</p>
             </div>
 
-            <button type="submit" class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#registerModal">Register!</button>
+            <!-- <button type="submit" class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#registerModal">Register!</button> -->
+            <button type='submit' id="register" data-bs-toggle="modal" data-bs-target="#registerModal">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Register
+            </button>
+
             <small class="mt-3">
                 <p style="text-decoration: underline; cursor: pointer; font-size: 18px;" @click="toggleStaus">
                     Click to Login!
@@ -212,7 +227,7 @@ export default {
 
 .myform {
     border-radius: 2%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Arvo', serif;
 }
 
 input[type="text"], input[type="email"], input[type="password"]{
@@ -283,10 +298,133 @@ input[type="text"], input[type="email"], input[type="password"]{
 
 
 .bg_green {
-    background-color: #f2cf07;
-    background-image: linear-gradient(315deg, #f2cf07 0%, #55d284 74%);
+    /* background-color: #f2cf07; */
+    background: linear-gradient(to right, #c1c161 0%, #c1c161 0%, #d4d4b1 100%);
+    background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+
+
+#share, #register {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #A44200;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px
+}
+
+#share:hover , #register:hover{
+    background: #A44200;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #F2C17D,
+                0 0 25px #F2C17D,
+                0 0 50px #F2C17D,
+                0 0 100px #F2C17D;
+}
+
+#share span , #register span{
+  position: absolute;
+  display: block;
+}
+
+#share span:nth-child(1) , #register span:nth-child(1){
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #F2C17D);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+#share span:nth-child(2) , #register span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #F2C17D);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+#share span:nth-child(3) , #register span:nth-child(3){
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #F2C17D);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+#share span:nth-child(4) , #register span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #F2C17D);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
 
 </style>

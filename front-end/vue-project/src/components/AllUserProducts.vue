@@ -61,7 +61,8 @@
 <template>
     <div class="container">
         <h2 class="text-success mb-4">Your Clothes!!</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-4"  v-if="allUserProducts.length > 0">
+
             <div class="col" v-for="product in allUserProducts" :key="product._id">
                 <div class="card h-100 ">
                     <img :src="product.image" class="card-img-top fixedImgHeight" alt="img can't be loaded">
@@ -100,7 +101,12 @@
                     
                 </div>
             </div>
+            
         </div>  
+        <div v-else>
+                <p class="display-6">You have no products.</p>
+                
+        </div>
 
     </div>
 

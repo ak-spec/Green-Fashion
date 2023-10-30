@@ -1,8 +1,19 @@
-<template>
-    <div class="personal">
-        <h1>Your Coordinates: </h1>
-        <p> Latitude: {{ coordinates.lat }}</p>
-        <p> Longitude: {{ coordinates.lng }}</p>
+<template class="entirebody">
+    <div v-if="!directionsInfoVisible" class="directions-info">
+        <strong>Find the most closest salvation army now!</strong><br>
+        <strong>simply click on any marker</strong>
+    </div>
+    <div v-if="directionsInfoVisible" class="directions-info">
+        <strong>Your Address:</strong>{{ userAddress }}<br>
+        <strong>Destination Address:</strong> {{ destinationAddress }}<br>
+        <strong>Distance:</strong> {{ distance }}<br>
+        <strong>Duration:</strong> {{ duration }}<br>
+        <p v-if="directions"><b>Directions:</b></p>
+        <div class="directions-scroll">
+        <ol v-if="directions">
+        <li v-for="(step, index) in directions.steps" :key="index">{{step.html_instructions}}</li>
+        </ol>
+    </div>
     </div>
     
     <GoogleMap id="map" v-bind:api-key='apiKey' style="width: 100%; height: 500px" :center="coordinates" :zoom="8">
@@ -11,7 +22,7 @@
         </CustomControl>
         <CustomMarker :options="{ position: coordinates  }">
             <div style="text-align: center">
-                <div style="font-size: 1.125rem; color: red; font-weight: bold;">My Location</div>
+                <div style="font-size: 1.125rem; color: rgb(25, 0, 255); font-weight: bold;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">My Location</div>
                 <img src="../assets/images/current_location.png" width="30" height="30" style="margin-top: 8px" />
             </div>
         </CustomMarker>
@@ -29,13 +40,15 @@
                 </InfoWindow>
             </Marker>
         </MarkerCluster>
-        
     </GoogleMap>
 </template>
 
 <script>
+
+    import {ref} from 'vue';
+    import axios from 'axios';
     import {GoogleMap, Marker, MarkerCluster, CustomMarker, InfoWindow, CustomControl } from "vue3-google-map"
-    import {ref} from 'vue'; //Add in this line of code to display infoWindow
+
 
 
 
@@ -145,18 +158,65 @@
 
         ];
             const infoWindow = ref(true)
+            const userAddress = ref('');
+            const destinationAddress = ref('');
+            const distance = ref('');
+            const duration = ref('');
+            const directionsInfoVisible = ref(false);
+            const directions = ref(null);
+            
             const sayHi = () => alert("Hi! Please click on the following to locate your preferred Salvation Army drop-off location!");
+            const showDirections = (destination, origin) => {
+      // Make an Axios request to the Directions API
+      axios
+        .get('https://maps.googleapis.com/maps/api/directions/json', {
+          params: {
+            origin: `${origin.lat},${origin.lng}`,
+            destination: `${destination.lat},${destination.lng}`,
+            key: "AIzaSyAMPEA8sJ9zhXSrzcwB3Z6dc5a2y2ysILk",
+          },
+        })
+        .then((response) => {
+          // Handle the response to display directions
+          console.log(response.data);
+          const route = response.data.routes[0].legs[0];
+          userAddress.value = route.start_address;
+          destinationAddress.value = route.end_address;
+          distance.value = route.distance.text;
+          duration.value = route.duration.text;
+          directions.value = route;
+          directionsInfoVisible.value = true;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
 
-        return {locations, sayHi};
-        },
+    return {
+      locations,
+      infoWindow,
+      showDirections,
+      userAddress,
+      destinationAddress,
+      distance,
+      duration,
+      directionsInfoVisible,
+      directions,
+      sayHi
+    };
+  },
+
+        
     
         data() {
             return {
-                apiKey : "AIzaSyDqWE6EI_LPusVBX3PdGeNNW1PMhT4Zeb0", 
+                apiKey : "AIzaSyAMPEA8sJ9zhXSrzcwB3Z6dc5a2y2ysILk", 
                 coordinates : {
                     lat: 1.290270,
 		            lng: 103.851959,
-                }
+                },
+
+
             }
         },
         created() {
@@ -182,31 +242,59 @@
 </script>
 
 
-<style scoped>
-.personal {
+<style>
+/* .personal {
     background: linear-gradient(to right, #96705B,#BA9A8E);;
-}
+} */
 
 #map {
     margin: auto;
-    
 }
 
-.custom-btn {
-  box-sizing: border-box;
-  background: white;
-  height: 40px;
-  width: 40px;
-  border-radius: 2px;
-  border: 0px;
-  margin: 10px;
-  padding: 0px;
-  font-size: 1.25rem;
-  text-transform: none;
-  appearance: none;
-  cursor: pointer;
-  user-select: none;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-  overflow: hidden;
+.mymarker{
+    position:relative;
+    animation: jump 1s infinite;
+    animation-delay: 3s;
 }
+
+@keyframes jump{
+    0%
+    {
+        transform:translateY(0)
+    }
+    20%{
+        transform:translateY(-20px)
+    }
+}
+
+.directions-info {
+  background-color: rgb(126, 126, 218);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 1;
+  position: relative;
+  height: 600px;
+  width:400px;
+  color:white;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+.directions-scroll {
+    max-height: 400px; 
+    overflow-y: auto; 
+    &::-webkit-scrollbar {
+        width: 7px; /* Default thin width */
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: blue;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}
+.entirebody{
+    background-color: black;
+}
+
 </style>

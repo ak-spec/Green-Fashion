@@ -12,13 +12,13 @@ export default {
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-with-shadow">
         <div class="container-fluid ms-5">
             <a class="navbar-brand" href="/">
-                <img src="../assets/images/logo.jpeg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
-                Green Fashion
+                <img src="../assets/images/environmentally-friendly.png" alt="Logo" width="55" height="55"><h2 class="title" style="margin-top: 15px;font-weight: 600;">Green Fashion</h2>
+                
             </a>
-            <button class="navbar-toggler bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse menu menu-1" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <router-link to="/Upstyling" class="nav-link animation" style="color: green;">Upstyling</router-link>
@@ -40,7 +40,7 @@ export default {
 
 <style lang="css" scoped>
 
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
 .navbar-with-shadow {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
   position: fixed;
@@ -49,69 +49,79 @@ export default {
   right: 0;
   z-index: 100
 }
+*{
+  margin: 0;
+  padding: 0;
+}
+.menu ul{
+  list-style: none;
+  margin: 0;
+  padding-left: 20px;
+  text-align: center;
+}
+.menu li{
+  display: inline-block;
+  margin: 7px;
+}
+.menu a{
+  font-size: 22px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  position: relative;
+  padding: 4px 0;
+}
+.menu a::before{
+  content: "";
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  transition: 0.5s transform ease;
+  transform: scale3d(0,1,1);
+  transform-origin: 0 50%;
+}
+.menu a:hover::before{
+  transform: scale3d(1,1,1);
+}
+.menu-1 a::before{
+  background: #36a702;
+  transform-origin: 100% 50%;
+}
+.menu-1 a:hover::before{
+  transform-origin: 0 50%;
+}
 
-.custom-navbar-toggler-icon {
-    font-size: 24px;
-}
-.animation {
-    text-align: center;
-}
-
-ul { 
-    margin: 0;
-    padding : 0;
-    display: flex;
-}
-
-ul li {
-    list-style: none;
-    margin: 0 20px;
-    transition: 0.5s;
-}
-
-ul li .animation {
-    display: block;
-    position:relative;
-    text-decoration:none;
-    padding:5px;
-    font-size:16px;
-    font-family: sans-serif;
-    color:#fff;
-    text-transform:uppercase;
-    transition:0.5s;
+.title
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #30f808 0%,
+    #06c455 29%,
+    #f0749d 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 25px;
 }
 
-ul:hover li .animation {
-    transform:scale(1.3);
-    opacity:0.2;
-    filter:blur(5px);
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
 
-ul li .animation:hover {
-    transform:scale(2);
-    opacity:1;
-    filter:blur(0);
-    text-decoration:none;
-    color:#fff;
-}
-
-ul li .animation:before {
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgb(99, 62, 62);
-    transition:0.5s;
-    transform-origin:right;
-    transform:scaleX(0);
-    z-index:-1;
-}
-ul li .animation:hover:before {
-    transition:transform 0.5s;
-    transform-origin:left;
-    transform:scaleX(1);
-}
 
 </style>

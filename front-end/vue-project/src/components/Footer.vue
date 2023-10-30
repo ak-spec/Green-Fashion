@@ -13,7 +13,7 @@ export default {
             <div class="wave" id="wave2"></div>
             <div class="wave" id="wave3"></div>
             <div class="wave" id="wave4"></div> -->
-        
+
         <div class=" row flex-column flex-md-row pt-3">
             <ul class="social_icon">
                     <li><a href="https://www.facebook.com/profile.php?id=61552721978267"><ion-icon name="logo-facebook"></ion-icon></a></li>

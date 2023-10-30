@@ -98,15 +98,26 @@ export default {
 
 <template>
     <div class="container-fluid pt-2 px-0 h-100">
-        <div class="container-fluid  py-0 px-5 h-100 heroSection position-relative">
-            <h1>Welcome {{ currUser }}!</h1>
-            <button class="btn btn-primary me-5 mt-2 position-absolute top-0 end-0" @click="$emit('loggedOut')">Logout</button>
+        <div class="container-fluid  py-2 px-5 h-100 heroSection position-relative">
             <div class="row">
-                <div class="col-12 my-2 my-sm-5 bg-dark text-white p-3 border border-dark rounded">
+                <div class="col-12 col-sm-10">
+                    <h1 class="text-center text-sm-start lead display-5">Welcome Back, {{ currUser }}</h1>
+                    <button class="d-block d-sm-none btn btn-sm btn-primary mt-2 mx-auto" @click="$emit('loggedOut')">Logout</button>
+                </div>
+                <div class="col d-none d-sm-block">
+                     <button class="btn btn-primary me-5 mt-2 position-absolute top-0 end-0" @click="$emit('loggedOut')">Logout</button>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12 my-2 my-sm-5 bg_green  py-3 px-3 border border-dark rounded">
                     <!-- Probably a slideshow -->
-                    <p>Fact of the day: </p>
-                    {{ quote.text }}<br><br>
-                    ~ {{ quote.author }}
+                    <p class="h4 fantasyFont">Fact of the day: </p>
+                    <p v-if="quote.text" class="mb-0 fantasyFont"> 
+                            <h3 class="">{{ quote.text }}</h3><br>
+                        <i>~ {{ quote.author }}</i>
+                    </p>
+                    <p v-else class="loading-text">Fetching quote...!</p>
                     <br><br>
                     
                 </div>
@@ -136,5 +147,23 @@ export default {
   background-image: url("../assets/images/fashion_picture.png");
   background-size: cover;
 }
+.bg_green {
+    background-color: #f2cf07;
+    background-image: linear-gradient(315deg, #f2cf07 0%, #55d284 74%);
+}
 
+.fantasyFont {
+    font-family:fantasy;
+}
+
+@keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+.loading-text {
+    font-size: 24px;
+    animation: pulse 1s infinite;
+}
 </style>

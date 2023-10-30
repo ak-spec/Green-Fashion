@@ -194,7 +194,6 @@
 
     return {
       locations,
-      infoWindow,
       showDirections,
       userAddress,
       destinationAddress,

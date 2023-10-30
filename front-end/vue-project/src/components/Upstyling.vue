@@ -173,11 +173,11 @@
 
     <div class="card text-center mb-5 mx-5">
         <div class="card-header">
-            <h2>What is upstyling?</h2>
+            <h2>What is Upstyling?</h2>
         </div>
         <div class="card-body">
             
-            <p class="card-text ">Upstyling, also known as upcycling, is the creative and sustainable art of transforming old or worn clothing into something new and stylish. 
+            <p class="card-text">Upstyling, also known as upcycling, is the creative and sustainable art of transforming old or worn clothing into something new and stylish. 
             Upstyling clothes allows you to breathe new life into your wardrobe by giving old, forgotten pieces a trendy makeover.
             The beauty of upstyling lies in its eco-friendliness, as it reduces textile waste and promotes a more sustainable approach to fashion.
             Get inspired by upstyling and turn an outdated pair of jeans into fashionable distressed shorts or an oversized shirt into a trendy crop top.
@@ -351,6 +351,10 @@
     .btn-success {
         width:300px;
         height:200px;
+    }
+
+    .card-text {
+        text-align: justify;
     }
 
     

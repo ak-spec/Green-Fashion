@@ -44,7 +44,7 @@ export default {
 <template>
     <div class="mt-5 pt-4 chat-container container">
         <h2>Ask us anything about how to recycle/reuse your clothes!</h2>
-        <div style="background-color: rgb(45, 132, 95);" class="row mb-3 rounded p-5">
+        <div style="background-color: rgb(45, 132, 95);" class="row mb-3 rounded p-5" >
             <div class="col-12">
                 <p v-if="answers" v-for="(answer, index) in answers" 
                 class="bg-light border rounded p-2  overflow-scroll" 
@@ -60,7 +60,9 @@ export default {
                     <input type="text" class="form-control" id="exampleFormControlInput1" 
                     placeholder="Enter any question u may have about green fashion?" v-model="question" 
                     >
-                    <button class="btn btn-primary mt-2" @click="fetchResponse">Send question</button>
+                    <!-- <button class="btn btn-primary mt-2" @click="fetchResponse">Send question</button> -->
+                    <button class="btn mt-2" @click="fetchResponse">Send Question</button>
+
                 </div>
             </div>
         </div>
@@ -81,7 +83,6 @@ export default {
     background: linear-gradient(90deg, #fff, #000);
     background-size: 200% 100%;
     background-clip: text;
-    text-fill-color: transparent;
     animation: gradient 2s linear infinite;
 }
 
@@ -103,6 +104,65 @@ export default {
 
 p {
     height: 100px;
+}
+
+.btn {
+    background-color: rgb(120, 215, 120);
+}
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: absolute;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 </style>

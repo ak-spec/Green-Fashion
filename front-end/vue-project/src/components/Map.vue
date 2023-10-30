@@ -269,7 +269,7 @@
 }
 
 .directions-info {
-    background-color: rgb(126, 126, 218);
+    background-color: #6a994e;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -278,13 +278,14 @@
     height: 100vh;
     width:400px;
     color:white;
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding-top: 50px;
 
 
 }
 .directions-scroll {
-    max-height: 400px; 
+    max-height: 375px; 
     overflow-y: auto; 
     &::-webkit-scrollbar {
         width: 7px; /* Default thin width */

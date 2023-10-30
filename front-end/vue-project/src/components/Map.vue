@@ -1,4 +1,5 @@
 <template class="entirebody">
+    
     <div v-if="!directionsInfoVisible" class="directions-info">
         <strong>Find the most closest salvation army now!</strong><br>
         <strong>simply click on any marker</strong>

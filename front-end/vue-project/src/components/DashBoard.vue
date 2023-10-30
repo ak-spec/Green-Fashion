@@ -122,7 +122,7 @@ export default {
                     
                 </div>
                 <div class="col-6  py-3">
-                    <UploadProduct @product-uploaded="addToAllUserProducts"/>
+                    <UploadProduct @product-uploaded="addToAllUserProducts" v-if="viewListedClothes"/>
                     <a class="d-none d-md-inline-block btn btn-primary  mx-3"  @click="toggleProductsView">{{ viewListedClothes ? "All Listings" : "Your Clothes" }}</a>
                 </div>
                 <div class="col-6 py-3 d-md-none">

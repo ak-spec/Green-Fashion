@@ -20,7 +20,7 @@
         <CustomControl position="RIGHT">
             <button class="custom-btn" @click="sayHi">👋</button>
         </CustomControl>
-        <CustomMarker :options="{ position: coordinates  }">
+        <CustomMarker class="mymarker" :options="{ position: coordinates  }">
             <div style="text-align: center">
                 <div style="font-size: 1.125rem; color: rgb(25, 0, 255); font-weight: bold;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">My Location</div>
                 <img src="../assets/images/current_location.png" width="30" height="30" style="margin-top: 8px" />
@@ -247,7 +247,9 @@
 } */
 
 #map {
-    margin: auto;
+    margin-top: 0 !important;
+    padding-top: 30px;
+    
 }
 
 .mymarker{
@@ -267,16 +269,18 @@
 }
 
 .directions-info {
-  background-color: rgb(126, 126, 218);
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  z-index: 1;
-  position: relative;
-  height: 600px;
-  width:400px;
-  color:white;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: rgb(126, 126, 218);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1;
+    position: relative;
+    height: 100vh;
+    width:400px;
+    color:white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-top: 50px;
+
 
 }
 .directions-scroll {

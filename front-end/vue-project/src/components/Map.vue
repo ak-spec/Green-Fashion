@@ -11,12 +11,12 @@
         <p v-if="directions"><b>Directions:</b></p>
         <div class="directions-scroll">
         <ol v-if="directions">
-        <li v-for="(step, index) in directions.steps" :key="index">{{step.html_instructions}}</li>
+        <li v-for="(step, index) in directions.steps" :key="index" v-html="step.html_instructions"></li>
         </ol>
     </div>
     </div>
     
-    <GoogleMap id="map" v-bind:api-key='apiKey' style="width: 100%; height: 500px" :center="coordinates" :zoom="8">
+    <GoogleMap id="map" v-bind:api-key='apiKey' style="width: 100%; height: 100vh" :center="coordinates" :zoom="8">
         <CustomControl position="RIGHT">
             <button class="custom-btn" @click="sayHi">👋</button>
         </CustomControl>
@@ -27,7 +27,7 @@
             </div>
         </CustomMarker>
         <MarkerCluster>
-            <Marker v-for="(location, i) in locations" :options="{ position: {lat: location.lat, lng: location.lng} }" :key="i">
+            <Marker v-for="(location, i) in locations" :options="{ position: {lat: location.lat, lng: location.lng} }" :key="i" @click="showDirections(location, coordinates)">
                 <InfoWindow v-model="this.infoWindow">
                     <div id="details">
                         <h2>Details: </h2>

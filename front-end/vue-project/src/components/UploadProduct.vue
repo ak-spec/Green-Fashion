@@ -149,7 +149,7 @@ export default {
                                 <div class="col-12 col-md-8 mb-3">
                                     <label for="category" class="form-label">Category</label>
                                     <select class="form-control" id="category" v-model="category">
-                                        <option value="General" selected>General</option>
+                                        <option value="" selected>Pls Choose a category</option>
                                         <option value="Formals Bottoms">Formal bottoms</option>
                                         <option value="Formals Tops">Formal Tops</option>
                                         <option value="Casuals Bottoms">Casual Bottoms</option>
@@ -165,6 +165,7 @@ export default {
                                 <div class="col-12 col-md-2 mb-3">
                                     <label for="gender" class="form-label">Gender</label>
                                     <select class="form-control" id="gender" v-model="gender">
+                                        <option value="" selected>Gender</option>
                                         <option value="M">Male</option>
                                         <option value="F">Female</option>
                                         <option value="Unisex">Unisex</option>
@@ -175,6 +176,7 @@ export default {
                                 <div class="col-12 col-md-2 mb-3">
                                     <label for="size" class="form-label">Size</label>
                                     <select class="form-control" id="size" v-model="size">
+                                        <option value="" selected>size</option>
                                         <option value="XS">XS</option>
                                         <option value="S">S</option>
                                         <option value="M">M</option>

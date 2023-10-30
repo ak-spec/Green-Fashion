@@ -56,7 +56,7 @@ export default {
             </div>
             <div class="col-12">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label"><h3 class="lead">Question:</h3></label>
+                    <label for="exampleFormControlInput1" class="form-label"><h3 class="lead text-white fw-bold">Question:</h3></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" 
                     placeholder="Enter any question u may have about green fashion?" v-model="question" 
                     >
@@ -108,6 +108,10 @@ p {
 
 .btn {
     background-color: rgb(120, 215, 120);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .btn:link,
 .btn:visited {

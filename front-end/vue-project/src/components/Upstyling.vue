@@ -223,7 +223,7 @@
 
     <div class="card mx-5 mb-3 rounded" style="background-color: rgb(45, 132, 95);">
         <div class="card-body">
-            <h5 class="card-title text-white">Step-by-step Tutorials</h5>
+            <h5 class="card-title text-white">Step-By-Step Tutorials</h5>
             <div class="card-group py-3">
                 <div class="carousel-item active"></div>
                 <div class="card">
@@ -232,7 +232,10 @@
                     <h5 class="card-title ">Shirt</h5>
                     <p class="card-text">Have you ever gotten an oversized tee as a free gift or have one stored somewhere from the old days (a.k.a. something you would never wear out)? Other than tossing it or sleeping in it, here's one idea to make it nice and wearable!</p>
                     
-                    <a href="http://micheleng.com/how-to-upcycle-a-plain-tee/"><button type="button" class="btn btn-primary">View more..</button></a>
+                    <a href="http://micheleng.com/how-to-upcycle-a-plain-tee/">
+                        <!-- <button type="button" class="btn btn-primary">View more..</button> -->
+                        <button type="button" class="btn mt-2">View More...</button>
+                    </a>
                     </div>
                 </div>
                 <div class="card">
@@ -240,7 +243,10 @@
                     <div class="card-body">
                     <h5 class="card-title">Pants</h5>
                     <p class="card-text">Next time you find yourself with an oversized pair of pants here's two potential ways you could give it some upcycle love.</p>
-                    <a href="https://theessentialsclub.com/blog-posts/upcycle-oversized-pants"><button type="button" class="btn btn-primary">View more..</button></a>
+                    <a href="https://theessentialsclub.com/blog-posts/upcycle-oversized-pants">
+                        <!-- <button type="button" class="btn btn-primary">View more..</button> -->
+                        <button type="button" class="btn mt-2">View More...</button>
+                    </a>
                     </div>
                 </div>
                 <div class="card">
@@ -248,7 +254,10 @@
                     <div class="card-body">
                     <h5 class="card-title">Cap</h5>
                     <p class="card-text">Embellishing an old hat with embroidery is a great way to transform those hats in the back of your closet or add some personality to your latest thrift find! </p>
-                    <a href="https://jacquelyncreates.com/diy-tutorials/diy-upcycle-embroidered-hat"><button type="button" class="btn btn-primary">View more...</button></a>
+                    <a href="https://jacquelyncreates.com/diy-tutorials/diy-upcycle-embroidered-hat">
+                        <!-- <button type="button" class="btn btn-primary">View more...</button> -->
+                        <button type="button" class="btn mt-2">View More...</button>
+                    </a>
                     </div>
                 </div>
                 
@@ -275,7 +284,7 @@
                                             <h5 class="card-title">{{ story.title }}</h5>
                                             <p class="card-text">{{ story.description }}</p>
                                             <div class="mt-auto">
-                                                <a v-bind:href="`${story.url}`"><button type="button" class="btn btn-primary ">View more...</button></a>
+                                                <a v-bind:href="`${story.url}`"><button type="button" class="btn mt-2">View More...</button></a>
                                             </div>
                                             
                                         </div>
@@ -344,6 +353,7 @@
 
     #welcome{
         padding-top:75px;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .carousel-control-prev, .carousel-control-next {
@@ -380,6 +390,83 @@
         }
     }
 
+    a {
+        text-decoration: none;
+    }
+
+    .btn {
+        color: black;
+        background-color: rgb(120, 215, 120);
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+    .btn:link,
+    .btn:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 15px 40px;
+        display: inline-block;
+        border-radius: 100px;
+        transition: all .2s;
+        position: absolute;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        color: black;
+        background-color: #a7c957;
+        font-weight: bold;
+    }
+
+    .btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+        
+    }
+
+    .btn:hover::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+    }
+
+    .btn-animated {
+        animation: moveInBottom 5s ease-out;
+        animation-fill-mode: backwards;
+    }
+
+    @keyframes moveInBottom {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+
+    .card-text { 
+        text-align: justify;
+    }
     
+
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 </style>

@@ -12,7 +12,7 @@ export default {
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-with-shadow">
         <div class="container-fluid ms-5">
             <a class="navbar-brand" href="/">
-                <img src="../assets/images/logo.jpeg" alt="Logo" width="55" height="55"><h2 class="title" style="margin-top: 15px;font-weight: 600;">Green Fashion</h2>
+                <img src="../assets/images/logo.jpeg" alt="Logo" width="55" height="55"><h2 class="title" style="margin-left: 15px; margin-top: 15px;font-weight: 600;">Green Fashion</h2>
                 
             </a>
             <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

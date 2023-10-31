@@ -5,11 +5,11 @@
         <strong>simply click on any marker</strong>
     </div>
     <div v-if="directionsInfoVisible" class="directions-info">
-        <strong>Your Address:</strong>{{ userAddress }}<br>
+        <strong>Your Address: </strong>{{ userAddress }}<br>
         <strong>Destination Address:</strong> {{ destinationAddress }}<br>
         <strong>Distance:</strong> {{ distance }}<br>
         <strong>Duration:</strong> {{ duration }}<br>
-        <p v-if="directions"><b>Directions:</b></p>
+        <p v-if="directions"><h4 class="mt-3 py-2 text-dark text-decoration-underline fw-bold border border-2 border-black bg-white">Directions:</h4></p>
         <div class="directions-scroll">
         <ol v-if="directions">
         <li v-for="(step, index) in directions.steps" :key="index" v-html="step.html_instructions"></li>
@@ -31,8 +31,8 @@
             <Marker v-for="(location, i) in locations" :options="{ position: {lat: location.lat, lng: location.lng} }" :key="i" @click="showDirections(location, coordinates)">
                 <InfoWindow v-model="this.infoWindow">
                     <div id="details">
-                        <h2>Details: </h2>
-                        <img :src="location.details.image" alt="Image" style="width:200px; height: 200px">
+                        <h3 >Details: </h3>
+                        <img :src="location.details.image" alt="Image" style="width:200px; height: 200px" class="mb-2">
                         <p><strong>Name:</strong> {{ location.details.title }}</p>
                         <p><strong>Address:</strong> {{ location.details.address }}</p>
                         <p><strong>Phone:</strong> {{ location.details.phone }}</p>
@@ -286,13 +286,13 @@
 
 }
 .directions-scroll {
-    max-height: 375px; 
+    max-height: 340px; 
     overflow-y: auto; 
     &::-webkit-scrollbar {
         width: 7px; /* Default thin width */
     }
     &::-webkit-scrollbar-thumb {
-        background-color: blue;
+        background-color: rgb(145, 100, 100);
     }
     &::-webkit-scrollbar-track {
         background: transparent;
@@ -302,4 +302,9 @@
     background-color: black;
 }
 
+.custom-btn { 
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
 </style>

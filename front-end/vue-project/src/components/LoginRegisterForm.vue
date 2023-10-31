@@ -18,7 +18,10 @@ export default {
                 url : "http://localhost:3000/api/v1/auth/login",
                 email : "",
                 password: "",
+                errors: "",
             },
+            loginFailed : false
+
         }
     },
     emits: ['userLoggedIn'],
@@ -69,11 +72,17 @@ export default {
                 window.localStorage.setItem("token", res.data.token);
                 window.localStorage.setItem("user", username);
                 this.$emit('userLoggedIn', username);
-                console.log(username)
+                this.loginFailed = false;
             })
             .catch((err) => {
-                const msg = err.message;
-                console.log(err)
+                if(err.response.data.errMsg === "Invalid credentials!"){
+                    this.loginDetails.errors = "Invalid credentials!";
+                    this.loginFailed = true;
+                }else{
+                    console.log(err)
+
+                }
+
             });
         }
     }
@@ -107,9 +116,10 @@ export default {
                 <!-- <label for="userPassword" class="form-label">Enter Password</label>
                 <input type="password" class="form-control" id="userPassword" placeholder="password" v-model="loginDetails.password"> -->
             </div>
+            <p v-if="loginFailed" class="text-danger fs-4">{{ loginDetails.errors }}</p>
 
             <!-- <button class="btn btn-primary my-2">Start Sharing!</button> -->
-            <button type='submit' id="share">
+            <button type='submit' id="share" data-bs-toggle="modal" data-bs-target="#loginModal">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -220,6 +230,8 @@ export default {
                 </div>
             </div>
         </div>
+
+
     </div>
 </template>
 

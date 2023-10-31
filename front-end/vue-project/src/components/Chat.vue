@@ -44,7 +44,7 @@ export default {
 <template>
     <div class="mt-5 pt-4 chat-container container">
         <h2>Ask us anything about how to recycle/reuse your clothes!</h2>
-        <div style="background-color: rgb(45, 132, 95);" class="row mb-3 rounded p-5" >
+        <div style="background-color: rgb(45, 132, 95); max-height: 85vh; overflow: scroll;" class="row mb-3 rounded p-5">
             <div class="col-12">
                 <p v-if="answers" v-for="(answer, index) in answers" 
                 class="bg-light border rounded p-2  overflow-scroll" 

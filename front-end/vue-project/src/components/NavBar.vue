@@ -40,7 +40,7 @@ export default {
 
 <style lang="css" scoped>
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 .navbar-with-shadow {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
   position: fixed;
@@ -97,7 +97,7 @@ export default {
 
 .title
 {
-   text-transform: uppercase;
+  text-transform: uppercase;
   background-image: linear-gradient(
     -225deg,
     #30f808 0%,
@@ -123,5 +123,8 @@ export default {
   }
 }
 
+.menu {
+  font-family: 'Open Sans', sans-serif;
+}
 
 </style>

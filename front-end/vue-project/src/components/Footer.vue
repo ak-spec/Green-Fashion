@@ -57,11 +57,14 @@ export default {
 
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
     .footer {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        font-family: 'Lato', sans-serif;
     }
     .footer .social_icon, .footer .menu{
         display: flex;

@@ -1,8 +1,8 @@
 <template class="entirebody">
     
     <div v-if="!directionsInfoVisible" class="directions-info">
-        <strong>Find the most closest salvation army now!</strong><br>
-        <strong>simply click on any marker</strong>
+        <strong>Find your nearest salvation army now!</strong><br>
+        <strong>Simply click on any <span><img style="height: 40px;width:40px;" src="../assets/images/location-pin (1).png"/></span></strong>
     </div>
     <div v-if="directionsInfoVisible" class="directions-info">
         <strong>Your Address: </strong>{{ userAddress }}<br>
@@ -280,7 +280,7 @@
     width:400px;
     color:white;
     box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Lato', sans-serif;
     padding-top: 50px;
 
 
@@ -307,4 +307,6 @@
     width: 40px;
     margin-right: 10px;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 </style>

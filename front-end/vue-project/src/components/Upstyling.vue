@@ -353,7 +353,7 @@
 
     #welcome{
         padding-top:75px;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Lato', sans-serif;
     }
 
     .carousel-control-prev, .carousel-control-next {
@@ -467,6 +467,6 @@
     }
     
 
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 </style>

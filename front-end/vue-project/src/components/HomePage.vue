@@ -45,10 +45,10 @@ export default {
           <span style="color: green;">Wardrobe Refresh:</span> 
           Share Your Style!"
         </h1>
-        <p class=" d-none d-md-block lead text-white fw-bold">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error ipsam excepturi enim quo nostrum soluta, 
-          repudiandae ut praesentium iusto eius expedita voluptatum asperiores! Voluptates saepe expedita obcaecati 
-          repellat delectus sit!
+        <p id="description" class=" d-none d-md-block lead fw-bold">
+          Our innovative fashion web application empowers you to upstyle and elevate your wardrobe sustainably. 
+          Explore curated pre-loved treasures, locate nearby Salvation Armies, and engage in real-time style consultations with our fashion experts. 
+          Redefine your fashion footprint with our one-of-a-kind platform, promoting eco-friendly choices and personal style like never before!
         </p>
       </div>
       <div class="col-sm-12 col-md-6 h-100 d-md-flex flex-md-column justify-content-md-center">
@@ -63,6 +63,8 @@ export default {
 </template>
 
 <style lang="css" scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 .heroSection {
   height: 100vh;
   object-fit: cover;
@@ -70,5 +72,12 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-} 
+  font-family: 'Lato', sans-serif;
+}
+
+#description {
+  color: green;
+  text-align: justify;
+  mix-blend-mode: color-burn;
+}
 </style>

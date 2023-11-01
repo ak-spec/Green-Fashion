@@ -43,7 +43,7 @@ export default {
 
 <template>
     <div class="mt-5 pt-4 chat-container container">
-        <h2>Ask us anything about how to recycle/reuse your clothes!</h2>
+        <h2>Feel free to have your queries about sustainable fashion typed below! </h2>
         <div style="background-color: rgb(45, 132, 95); max-height: 85vh; overflow: scroll;" class="row mb-3 rounded p-5">
             <div class="col-12">
                 <p v-if="answers" v-for="(answer, index) in answers" 
@@ -58,7 +58,7 @@ export default {
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"><h3 class="lead text-white fw-bold">Question:</h3></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" 
-                    placeholder="Enter any question u may have about green fashion?" v-model="question" 
+                    placeholder="Enter any question you may have about Sustainable Fashion?" v-model="question" 
                     >
                     <!-- <button class="btn btn-primary mt-2" @click="fetchResponse">Send question</button> -->
                     <button class="btn mt-2" @click="fetchResponse">Send Question</button>
@@ -71,6 +71,7 @@ export default {
 
 <style lang="css" scoped>
 .chat-container {
+    font-family: 'Lato', sans-serif;
     height: 100vh;
 }
 
@@ -168,5 +169,7 @@ p {
         transform: translateY(0px);
     }
 }
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 
 </style>

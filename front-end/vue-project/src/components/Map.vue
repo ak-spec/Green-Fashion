@@ -22,7 +22,7 @@
             </div>
         </div>
         
-        <div class="col-12 col-lg-8 px-0">
+        <div class="col-12 col-lg-8 px-0 pt-lg-4">
             <GoogleMap id="map" v-bind:api-key='apiKey' class="h-100 pt-0" :center="coordinates" :zoom="8">
                 <CustomControl position="RIGHT">
                     <button class="custom-btn" @click="sayHi">👋</button>

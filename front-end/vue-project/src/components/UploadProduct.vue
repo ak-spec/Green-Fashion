@@ -149,16 +149,16 @@ export default {
                                 <div class="col-12 col-md-8 mb-3">
                                     <label for="category" class="form-label">Category</label>
                                     <select class="form-control" id="category" v-model="category">
-                                        <option value="" selected>Pls Choose a category</option>
-                                        <option value="Formals Bottoms">Formal bottoms</option>
+                                        <option value="" selected>Please Choose a Category</option>
+                                        <option value="Formals Bottoms">Formal Bottoms</option>
                                         <option value="Formals Tops">Formal Tops</option>
                                         <option value="Casuals Bottoms">Casual Bottoms</option>
                                         <option value="Casuals Tops">Casual Tops</option>
                                         <option value="Denims">Denims</option>
-                                        <option value="Traditional Wear">Tradional Wear</option>
+                                        <option value="Traditional Wear">Traditional Wear</option>
                                         <option value="Children's Wear">Children</option>
                                         <option value="Accessories">Accessories</option>
-                                        <option value="Dresses">Women's dresses</option>
+                                        <option value="Dresses">Women's Dresses</option>
                                     </select>
                                 </div>
 
@@ -176,7 +176,7 @@ export default {
                                 <div class="col-12 col-md-2 mb-3">
                                     <label for="size" class="form-label">Size</label>
                                     <select class="form-control" id="size" v-model="size">
-                                        <option value="" selected>size</option>
+                                        <option value="" selected>Size</option>
                                         <option value="XS">XS</option>
                                         <option value="S">S</option>
                                         <option value="M">M</option>
@@ -189,14 +189,14 @@ export default {
                                 <div class="col-12 col-md-8 mb-3">
                                     <label for="desc" class="form-label">Description</label>
                                     <textarea class="form-control" id="desc" rows="3" 
-                                    placeholder="Describe what you are sharing;eg.How old it is,brand etc.The unit number of your building."
-                                    v-model="description"
+                                    placeholder="Describe what you are sharing; Eg. Condition of Clothes, Brand of Clothing, etc. Unit Number of your Place of Convenience."
+                                    v-model="description" 
                                     >
                                     </textarea>
                                 </div>
 
                                 <div class="col-12 col-md-4 mb-3">
-                                    <label for="formFile" class="form-label">Choose Product Img</label>
+                                    <label for="formFile" class="form-label">Choose Product Image</label>
                                     <input class="form-control" type="file" @change="checkFile" id="formFile" >
                                 </div>
 
@@ -212,7 +212,7 @@ export default {
 
                                 <div class="col-12 col-md-4 mb-3">
                                     <label for="postal" class="form-label">Postal Code</label>
-                                    <input type="text" class="form-control" id="postal" placeholder="postal code" v-model="postalCode">
+                                    <input type="text" class="form-control" id="postal" placeholder="Postal Code" v-model="postalCode">
                                 </div>
 
                                 <div class="col-12 col-md-4 mb-3">

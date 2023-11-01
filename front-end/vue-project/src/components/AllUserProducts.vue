@@ -111,7 +111,7 @@
     </div>
 
 
-    <!--Update Form Valiadtion Modal -->
+    <!--Update Form Validation Modal -->
     <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" 
         data-bs-backdrop="static" data-bs-keyboard="false"
     >
@@ -140,4 +140,9 @@
     height: 300px;
 }
 
+.container {
+    font-family: 'Lato', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 </style>

@@ -173,7 +173,9 @@ export default {
             @change="performLiveSearch"
             >
             <span class="input-group-text bg-transparent border-0 position-absolute end-0 top-0 me-3">
-                <i class="bi bi-search display-7"></i>
+                <i style="cursor: pointer;" class="bi bi-search display-7"
+                @change="performLiveSearch">
+                </i>
             </span>
             
         </div>

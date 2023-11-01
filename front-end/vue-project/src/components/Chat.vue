@@ -43,22 +43,53 @@ export default {
 
 <template>
     <div class="mt-5 pt-4 chat-container container">
-        <h2>Feel free to have your queries about sustainable fashion typed below! </h2>
+        <h2>Feel free to have your queries about Sustainable Fashion typed below! </h2>
         <div style="background-color: rgb(45, 132, 95); max-height: 85vh; overflow: scroll;" class="row mb-3 rounded p-5">
             <div class="col-12">
                 <p v-if="answers" v-for="(answer, index) in answers" 
-                class="bg-light border rounded p-2  overflow-scroll" 
-                :class="{'loading-text': isLoading && index === answers.length - 1, 'pulsating': isLoading && index === answers.length - 1}"
+                class="bg-light border rounded p-2  overflow-scroll contain" 
+                :class="{ 'loading-text' : isLoading && index === answers.length - 1}"
+                style="height: 60px; margin-bottom: 10px;"
                 >
                     {{ answer }}
                 </p>
 
+                <div v-if="isLoading">
+                    <svg class="ip" viewBox="0 0 256 128" width="128px" height="64px" xmlns="http://www.w3.org/2000/svg">
+		<defs>
+			<linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0">
+				<stop offset="0%" stop-color="#5ebd3e" />
+				<stop offset="33%" stop-color="#ffb900" />
+				<stop offset="67%" stop-color="#f78200" />
+				<stop offset="100%" stop-color="#e23838" />
+			</linearGradient>
+			<linearGradient id="grad2" x1="1" y1="0" x2="0" y2="0">
+				<stop offset="0%" stop-color="#e23838" />
+				<stop offset="33%" stop-color="#973999" />
+				<stop offset="67%" stop-color="#009cdf" />
+				<stop offset="100%" stop-color="#5ebd3e" />
+			</linearGradient>
+		</defs>
+		<g fill="none" stroke-linecap="round" stroke-width="16">
+			<g class="ip__track" stroke="#ddd">
+				<path d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56"/>
+				<path d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64"/>
+			</g>
+			<g stroke-dasharray="180 656">
+				<path class="ip__worm1" stroke="url(#grad1)" stroke-dashoffset="0" d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56"/>
+				<path class="ip__worm2" stroke="url(#grad2)" stroke-dashoffset="358" d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64"/>
+			</g>
+		</g>
+	                </svg>
+                </div>
+                <!-- :class="{'loading-text': isLoading && index === answers.length - 1, 'pulsating': isLoading && index === answers.length - 1}" -->
+
             </div>
             <div class="col-12">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label"><h3 class="lead text-white fw-bold">Question:</h3></label>
+                    <label for="exampleFormControlInput1" class="form-label"></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" 
-                    placeholder="Enter any question you may have about Sustainable Fashion?" v-model="question" 
+                    placeholder="Enter any question you may have about Sustainable Fashion." v-model="question" 
                     >
                     <!-- <button class="btn btn-primary mt-2" @click="fetchResponse">Send question</button> -->
                     <button class="btn mt-2" @click="fetchResponse">Send Question</button>
@@ -73,6 +104,8 @@ export default {
 .chat-container {
     font-family: 'Lato', sans-serif;
     height: 100vh;
+    overflow-y: hidden;
+
 }
 
 @keyframes gradient {
@@ -84,10 +117,10 @@ export default {
     background: linear-gradient(90deg, #fff, #000);
     background-size: 200% 100%;
     background-clip: text;
-    animation: gradient 2s linear infinite;
+    animation: gradient 3s linear infinite;
 }
 
-.pulsating {
+/* .pulsating {
   animation: pulsate 2s infinite;
 }
 
@@ -101,11 +134,15 @@ export default {
   100% {
     transform: scale(1);
   }
-}
+} */
 
 p {
     height: 100px;
 }
+/* .row {
+    overflow: hidden;
+    overscroll-behavior-y: contain;
+} */
 
 .btn {
     background-color: rgb(120, 215, 120);
@@ -169,6 +206,73 @@ p {
         transform: translateY(0px);
     }
 }
+
+:root {
+	--hue: 223;
+	--bg: hsl(var(--hue),90%,95%);
+	--fg: hsl(var(--hue),90%,5%);
+	--trans-dur: 0.3s;
+	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
+}
+
+.ip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.ip__track {
+	stroke: hsl(var(--hue),90%,90%);
+	transition: stroke var(--trans-dur);
+}
+.ip__worm1,
+.ip__worm2 {
+	animation: worm1 2s linear infinite;
+}
+.ip__worm2 {
+	animation-name: worm2;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: hsl(var(--hue),90%,5%);
+		--fg: hsl(var(--hue),90%,95%);
+	}
+	.ip__track {
+		stroke: hsl(var(--hue),90%,15%);
+	}
+}
+
+/* Animation */
+@keyframes worm1 {
+	from {
+		stroke-dashoffset: 0;
+	}
+	50% {
+		animation-timing-function: steps(1);
+		stroke-dashoffset: -358;
+	}
+	50.01% {
+		animation-timing-function: linear;
+		stroke-dashoffset: 358;
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes worm2 {
+	from {
+		stroke-dashoffset: 358;
+	}
+	50% {
+		stroke-dashoffset: 0;
+	}
+	to {
+		stroke-dashoffset: -358;
+	}
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 

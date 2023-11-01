@@ -105,7 +105,8 @@ export default {
                     <button class="d-block d-sm-none btn btn-sm btn-primary mt-2 mx-auto" @click="$emit('loggedOut')">Logout</button>
                 </div>
                 <div class="col d-none d-sm-block">
-                     <button class="btn btn-primary me-5 mt-2 position-absolute top-0 end-0" @click="$emit('loggedOut')">Logout</button>
+                     <!-- <button class="btn btn-primary me-5 mt-3 position-absolute top-0 end-0" @click="$emit('loggedOut')">Logout</button> -->
+                     <button type="button" class="btn mt-3 me-5 position-absolute top-0 end-0" @click="$emit('loggedOut')">Logout</button>
                 </div>
 
             </div>
@@ -123,7 +124,7 @@ export default {
                 </div>
                 <div class="col-6  py-3">
                     <UploadProduct @product-uploaded="addToAllUserProducts" v-if="viewListedClothes"/>
-                    <a class="d-none d-md-inline-block btn btn-primary  mx-3"  @click="toggleProductsView">{{ viewListedClothes ? "All Listings" : "Your Clothes" }}</a>
+                    <a class="d-none d-md-inline-block btn mx-3"  @click="toggleProductsView">{{ viewListedClothes ? "All Listings" : "Your Clothes" }}</a>
                 </div>
                 <div class="col-6 py-3 d-md-none">
                     <a class="btn btn-primary mx-3" @click="toggleProductsView">{{ viewListedClothes ? "All Listings" : "Your Clothes"}}</a>
@@ -146,10 +147,10 @@ export default {
   height: 100vh;
   background-image: url("../assets/images/fashion_picture.png");
   background-size: cover;
+  text-align: justify;
 }
 .bg_green {
-    background-color: #f2cf07;
-    background-image: linear-gradient(315deg, #f2cf07 0%, #55d284 74%);
+    background: linear-gradient(to right, #c1c161 0%, #c1c161 0%, #d4d4b1 100%);
 }
 
 .fantasyFont {
@@ -166,4 +167,72 @@ export default {
     font-size: 24px;
     animation: pulse 1s infinite;
 }
+
+.btn {
+        color: black;
+        background-color: rgb(120, 215, 120);
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+    .btn:link,
+    .btn:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 15px 40px;
+        display: inline-block;
+        border-radius: 100px;
+        transition: all .2s;
+        position: absolute;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        color: black;
+        background-color: #a7c957;
+        font-weight: bold;
+    }
+
+    .btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+        
+    }
+
+    .btn:hover::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+    }
+
+    .btn-animated {
+        animation: moveInBottom 5s ease-out;
+        animation-fill-mode: backwards;
+    }
+
+    @keyframes moveInBottom {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
 </style>

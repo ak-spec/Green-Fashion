@@ -1,47 +1,55 @@
-<template class="entirebody">
-    
-    <div v-if="!directionsInfoVisible" class="directions-info">
-        <strong>Find your nearest salvation army now!</strong><br>
-        <strong>Simply click on any <span><img style="height: 40px;width:40px;" src="../assets/images/location-pin (1).png"/></span></strong>
-    </div>
-    <div v-if="directionsInfoVisible" class="directions-info">
-        <strong>Your Address: </strong>{{ userAddress }}<br>
-        <strong>Destination Address:</strong> {{ destinationAddress }}<br>
-        <strong>Distance:</strong> {{ distance }}<br>
-        <strong>Duration:</strong> {{ duration }}<br>
-        <p v-if="directions"><h4 class="mt-3 py-2 text-dark text-decoration-underline fw-bold border border-2 border-black bg-white">Directions:</h4></p>
-        <div class="directions-scroll">
-        <ol v-if="directions">
-        <li v-for="(step, index) in directions.steps" :key="index" v-html="step.html_instructions"></li>
-        </ol>
-    </div>
-    </div>
-    
-    <GoogleMap id="map" v-bind:api-key='apiKey' style="width: 100%; height: 100vh" :center="coordinates" :zoom="8">
-        <CustomControl position="RIGHT">
-            <button class="custom-btn" @click="sayHi">👋</button>
-        </CustomControl>
-        <CustomMarker class="mymarker" :options="{ position: coordinates  }">
-            <div style="text-align: center">
-                <div style="font-size: 1.125rem; color: rgb(25, 0, 255); font-weight: bold;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">My Location</div>
-                <img src="../assets/images/current_location.png" width="30" height="30" style="margin-top: 8px" />
+<template class="entirebody h-100">
+    <div class="row flex-direction-column flex-direction-lg-row w-100 h-100">
+        <div class="col-12 col-lg-4 px-0 directions-info overflow-scroll" :class="{'h-100' : directionsInfoVisible}">
+            <div v-if="!directionsInfoVisible">
+                <strong>Find your nearest salvation army now!</strong><br>
+                <strong>Simply click on any <span><img style="height: 40px;width:40px;" src="../assets/images/location-pin (1).png"/></span></strong>
             </div>
-        </CustomMarker>
-        <MarkerCluster>
-            <Marker v-for="(location, i) in locations" :options="{ position: {lat: location.lat, lng: location.lng} }" :key="i" @click="showDirections(location, coordinates)">
-                <InfoWindow v-model="this.infoWindow">
-                    <div id="details">
-                        <h3 >Details: </h3>
-                        <img :src="location.details.image" alt="Image" style="width:200px; height: 200px" class="mb-2">
-                        <p><strong>Name:</strong> {{ location.details.title }}</p>
-                        <p><strong>Address:</strong> {{ location.details.address }}</p>
-                        <p><strong>Phone:</strong> {{ location.details.phone }}</p>
-                        <p><strong>Hours:</strong> {{ location.details.operating_hours }}</p>
+            <div v-if="directionsInfoVisible">
+
+                <strong>Your Address: </strong>{{ userAddress }}<br>
+                <strong>Destination Address:</strong> {{ destinationAddress }}<br>
+                <strong>Distance:</strong> {{ distance }}<br>
+                <strong>Duration:</strong> {{ duration }}<br>
+                <p v-if="directions"><h4 class="mt-3 py-2 text-dark text-decoration-underline fw-bold border border-2 border-black bg-white">Directions:</h4></p>
+                <div class="directions-scroll">
+                    <ol v-if="directions">
+                        <li v-for="(step, index) in directions.steps" :key="index" v-html="step.html_instructions"></li>
+                    </ol>
+                </div>
+                <button class="d-lg-none btn btn-primary" @click="showMap">Back To Map</button>
+
+            </div>
+        </div>
+        
+        <div class="col-12 col-lg-8 px-0">
+            <GoogleMap id="map" v-bind:api-key='apiKey' class="h-100 pt-0" :center="coordinates" :zoom="8">
+                <CustomControl position="RIGHT">
+                    <button class="custom-btn" @click="sayHi">👋</button>
+                </CustomControl>
+                <CustomMarker class="mymarker" :options="{ position: coordinates  }">
+                    <div style="text-align: center">
+                        <div style="font-size: 1.125rem; color: rgb(25, 0, 255); font-weight: bold;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">My Location</div>
+                        <img src="../assets/images/current_location.png" width="30" height="30" style="margin-top: 8px" />
                     </div>
-                </InfoWindow>
-            </Marker>
-        </MarkerCluster>
-    </GoogleMap>
+                </CustomMarker>
+                <MarkerCluster>
+                    <Marker v-for="(location, i) in locations" :options="{ position: {lat: location.lat, lng: location.lng} }" :key="i" @click="showDirections(location, coordinates)">
+                        <InfoWindow v-model="this.infoWindow">
+                            <div id="details">
+                                <h3 >Details: </h3>
+                                <img :src="location.details.image" alt="Image" style="width:200px; height: 200px" class="mb-2">
+                                <p><strong>Name:</strong> {{ location.details.title }}</p>
+                                <p><strong>Address:</strong> {{ location.details.address }}</p>
+                                <p><strong>Phone:</strong> {{ location.details.phone }}</p>
+                                <p><strong>Hours:</strong> {{ location.details.operating_hours }}</p>
+                            </div>
+                        </InfoWindow>
+                    </Marker>
+                </MarkerCluster>
+            </GoogleMap>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -165,8 +173,12 @@
             const duration = ref('');
             const directionsInfoVisible = ref(false);
             const directions = ref(null);
+
             
             const sayHi = () => alert("Hi! Please click on the following to locate your preferred Salvation Army drop-off location!");
+            const showMap = () => {
+                directionsInfoVisible.value = false;
+            }
             const showDirections = (destination, origin) => {
       // Make an Axios request to the Directions API
       axios
@@ -202,7 +214,8 @@
       duration,
       directionsInfoVisible,
       directions,
-      sayHi
+      sayHi,
+      showMap
     };
   },
 
@@ -274,10 +287,7 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    z-index: 1;
     position: relative;
-    height: 100vh;
-    width:400px;
     color:white;
     box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
     font-family: 'Lato', sans-serif;
@@ -286,7 +296,6 @@
 
 }
 .directions-scroll {
-    max-height: 340px; 
     overflow-y: auto; 
     &::-webkit-scrollbar {
         width: 7px; /* Default thin width */

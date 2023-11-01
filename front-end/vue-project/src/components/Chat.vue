@@ -49,7 +49,7 @@ export default {
                 <p v-if="answers" v-for="(answer, index) in answers" 
                 class="bg-light border rounded p-2  overflow-scroll contain" 
                 :class="{ 'loading-text' : isLoading && index === answers.length - 1}"
-                style="height: 60px; margin-bottom: 10px;"
+                style="height: 100px; margin-bottom: 10px;"
                 >
                     {{ answer }}
                 </p>

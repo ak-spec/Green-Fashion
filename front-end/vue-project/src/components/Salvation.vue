@@ -20,6 +20,7 @@
 
 <style>
 	#map {
+		height: 100vh;
 		margin-top: 100px;
 		text-align: center;
 		display: flex;

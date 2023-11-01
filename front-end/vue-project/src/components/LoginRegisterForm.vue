@@ -92,8 +92,8 @@ export default {
 
 <template>
     <!-- Still have to do validation for login -->
-    <div class="container w-75  h-75 d-flex flex-column justify-content-center align-items-center bg_green myform text-white">
-        <h1 class="text-center">{{ login ? "Login" : "Register" }}</h1>
+    <div class="container w-75  h-75 overflow-scroll d-flex flex-column justify-content-center align-items-center bg_green myform text-white">
+        <h1 class="text-center mb-2">{{ login ? "Login" : "Register" }}</h1>
         <form v-if="login" class="w-75 d-flex flex-column align-items-center" @submit.prevent="handleLogin" novalidate>
             <div class="mb-4 w-100 wrapper">
                 <div class="input-data">
@@ -135,7 +135,7 @@ export default {
 
         </form>
         <form v-else  class="w-75 d-flex flex-column align-items-center" @submit.prevent="handleRegister" novalidate>
-            <div class="mb-4 wrapper w-100 ">
+            <div class="mb-2 mb-sm-4 wrapper w-100 ">
                 <div class="input-data">
                     <input type="text" id="userName" required
                     v-model="RegisterDetails.username"
@@ -149,7 +149,7 @@ export default {
                 v-model="RegisterDetails.username"
                 required minlength="3" maxlength="50"
                 > -->
-            <div class="mb-4 wrapper w-100 ">
+            <div class="mb-2 mb-sm-4 wrapper w-100 ">
                 <div class="input-data">
                     <input type="email" 
                     v-model="RegisterDetails.email"
@@ -165,7 +165,7 @@ export default {
                 required 
                 >
             </div> -->
-            <div class="mb-4 wrapper w-100">
+            <div class="mb-2 mb-sm-4 wrapper w-100">
                 <div class="input-data">
                     <input type="password" id="userPassword"
                     v-model="RegisterDetails.password"
@@ -180,7 +180,7 @@ export default {
                 > -->
                 <p v-if="RegisterDetails.passwordNotMatch" style="color: red;">Passwords do not match!</p>
             </div>
-            <div class="mb-4 wrapper w-100">
+            <div class="mb-2 mb-sm-4 wrapper w-100">
                 <div class="input-data">
                     <input type="password" id="userConfirmPassword"
                     v-model="RegisterDetails.confirmPassword"

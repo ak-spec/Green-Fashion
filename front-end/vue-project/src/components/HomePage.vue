@@ -38,20 +38,20 @@ export default {
 <template>
 
     <div class="mt-5">
-    <div v-if="!loginStatus" class="row heroSection">
+    <div v-if="!loginStatus" class="row heroSection w-100">
       <div class="text-white ps-5 pe-0 gap-0 h-sm-25 col-sm-12 d-flex flex-column justify-content-start mb-4 align-items-center
-      h-md-100 col-md-6 d-flex flex-md-column justify-content-md-center align-items-md-start">
-        <h1>
-          <span style="color: green;">Wardrobe Refresh:</span> 
-          Share Your Style!"
+      h-lg-100 col-lg-6 d-flex flex-lg-column justify-content-lg-center align-items-lg-start w-lg-50 w-sm-100">
+        <h1 class="mt-5 mb-0 mb-sm-1 mt-sm-3 text-center d-flex w-100 justify-content-sm-center justify-content-lg-start">
+          <span style="color: green;" class="">Wardrobe Refresh:</span> 
+          <span class="">Share Your Style!"</span>
         </h1>
-        <p id="description" class=" d-none d-md-block lead fw-bold">
+        <p id="description" class=" d-none d-lg-block lead fw-bold">
           Our innovative fashion web application empowers you to upstyle and elevate your wardrobe sustainably. 
           Explore curated pre-loved treasures, locate nearby Salvation Armies, and engage in real-time style consultations with our fashion experts. 
           Redefine your fashion footprint with our one-of-a-kind platform, promoting eco-friendly choices and personal style like never before!
         </p>
       </div>
-      <div class="col-sm-12 col-md-6 h-100 d-md-flex flex-md-column justify-content-md-center">
+      <div class="col-sm-12 col-lg-6 h-100 d-lg-flex flex-lg-column justify-content-lg-center">
         <LoginRegisterForm @userLoggedIn="loginStatus = true"/>
       </div>
     </div>

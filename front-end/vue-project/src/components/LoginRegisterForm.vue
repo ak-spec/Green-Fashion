@@ -135,7 +135,7 @@ export default {
 
         </form>
         <form v-else  class="w-75 d-flex flex-column align-items-center" @submit.prevent="handleRegister" novalidate>
-            <div class="mb-2 mb-sm-4 wrapper w-100 ">
+            <div class="mb-2 mb-sm-3 wrapper w-100 ">
                 <div class="input-data">
                     <input type="text" id="userName" required
                     v-model="RegisterDetails.username"
@@ -149,7 +149,7 @@ export default {
                 v-model="RegisterDetails.username"
                 required minlength="3" maxlength="50"
                 > -->
-            <div class="mb-2 mb-sm-4 wrapper w-100 ">
+            <div class="mb-2 mb-sm-3 wrapper w-100 ">
                 <div class="input-data">
                     <input type="email" 
                     v-model="RegisterDetails.email"
@@ -165,7 +165,7 @@ export default {
                 required 
                 >
             </div> -->
-            <div class="mb-2 mb-sm-4 wrapper w-100">
+            <div class="mb-2 mb-sm-3 wrapper w-100">
                 <div class="input-data">
                     <input type="password" id="userPassword"
                     v-model="RegisterDetails.password"
@@ -180,7 +180,7 @@ export default {
                 > -->
                 <p v-if="RegisterDetails.passwordNotMatch" style="color: red;">Passwords do not match!</p>
             </div>
-            <div class="mb-2 mb-sm-4 wrapper w-100">
+            <div class="mb-2 mb-sm-3 wrapper w-100">
                 <div class="input-data">
                     <input type="password" id="userConfirmPassword"
                     v-model="RegisterDetails.confirmPassword"
@@ -197,7 +197,7 @@ export default {
             </div>
 
             <!-- <button type="submit" class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#registerModal">Register!</button> -->
-            <button type='submit' id="register" data-bs-toggle="modal" data-bs-target="#registerModal">
+            <button type='submit' id="register" data-bs-toggle="modal" class="mt-sm-0" data-bs-target="#registerModal">
                 <span></span>
                 <span></span>
                 <span></span>

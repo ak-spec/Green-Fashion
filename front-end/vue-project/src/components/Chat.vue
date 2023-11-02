@@ -63,16 +63,17 @@ export default {
             
 
             <div class="col-12" v-if="answers" v-for="(answer, index) in answers">
+                
                 <img src="../assets/images/chatbot.png" alt="Response Icon" class="icon" style="height:50px; width:50px; "/>
                 <p 
-                class="bg-light border rounded p-2 " 
+                class="bg-light border rounded p-2 overflow-scroll contain" 
                 :class="{ 'loading-text' : isLoading && index === answers.length - 1}"
-                style="height: 100px; margin-bottom: 10px;"
+                style="height: 100px; margin-bottom: 10px; "
                 >
                     {{ answer }}
                 </p>
 
-                
+            </div>    
 
                 <div v-if="isLoading">
                     <svg class="ip" viewBox="0 0 256 128" width="128px" height="64px" xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +102,7 @@ export default {
 			</g>
 		</g>
 	                </svg>
-                </div>
+             
 
                 
                 <!-- :class="{'loading-text': isLoading && index === answers.length - 1, 'pulsating': isLoading && index === answers.length - 1}" -->

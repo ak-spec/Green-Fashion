@@ -45,7 +45,7 @@ export default {
           <span style="color: green;" class="">Wardrobe Refresh:</span> 
           <span class="">Share Your Style!"</span>
         </h1>
-        <p id="description" class=" d-none d-lg-block lead fw-bold">
+        <p id="description" class=" d-none d-lg-block lead fw-bold mt-4">
           Our innovative fashion web application empowers you to upstyle and elevate your wardrobe sustainably. 
           Explore curated pre-loved treasures, locate nearby Salvation Armies, and engage in real-time style consultations with our fashion experts. 
           Redefine your fashion footprint with our one-of-a-kind platform, promoting eco-friendly choices and personal style like never before!

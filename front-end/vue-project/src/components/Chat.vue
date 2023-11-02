@@ -8,11 +8,16 @@ export default {
         return {
             question: "",
             answers: [],
-            isLoading: false
+            isLoading: false,
+            
+            prompts: ['What is sustainable fashion?', 'Why do we need to be sustainable?', "How can I reduce clothing waste?"]
         }
     },
     methods: {
         fetchResponse(){
+
+          
+
             if(this.answers.length === 4){
                     this.answers.shift();
             }
@@ -23,36 +28,51 @@ export default {
                 prompt: this.question,
             }})
             .then((res) => {
+                
                 const idx = this.answers.indexOf("Loading...");
                 this.answers.splice(idx, 1)
                 this.isLoading = false;
-                
                 this.answers.push(res.data.response);
+                
                 
             })
             .catch((err) => {
                 console.log(err)
             })
+            
             this.question = "";
+            
 
+        }, 
+
+        setPrompt (prompt) {
+
+            this.question = prompt;
         }
+
+        
     }
 }
 </script>
 
 
 <template>
-    <div class="mt-5 pt-4 chat-container container">
-        <h2>Feel free to have your queries about Sustainable Fashion typed below! </h2>
-        <div style="background-color: rgb(45, 132, 95); max-height: 85vh; overflow: scroll;" class="row mb-3 rounded p-5">
-            <div class="col-12">
-                <p v-if="answers" v-for="(answer, index) in answers" 
-                class="bg-light border rounded p-2  overflow-scroll contain" 
+    <div class="mt-5 pt-4 chat-container container" style="overflow:scroll;">
+        <h2 class="my-4">Feel free to have your queries about Sustainable Fashion typed below! </h2>
+        <div style="background-color: rgb(45, 132, 95); " class="row mb-3 rounded p-5">
+            
+
+            <div class="col-12" v-if="answers" v-for="(answer, index) in answers">
+                <img src="../assets/images/chatbot.png" alt="Response Icon" class="icon" style="height:50px; width:50px; "/>
+                <p 
+                class="bg-light border rounded p-2 " 
                 :class="{ 'loading-text' : isLoading && index === answers.length - 1}"
                 style="height: 100px; margin-bottom: 10px;"
                 >
                     {{ answer }}
                 </p>
+
+                
 
                 <div v-if="isLoading">
                     <svg class="ip" viewBox="0 0 256 128" width="128px" height="64px" xmlns="http://www.w3.org/2000/svg">
@@ -82,22 +102,59 @@ export default {
 		</g>
 	                </svg>
                 </div>
+
+                
                 <!-- :class="{'loading-text': isLoading && index === answers.length - 1, 'pulsating': isLoading && index === answers.length - 1}" -->
 
             </div>
+            <div class="container" style="display:flex;">
+
+                <div v-for="(prompt, index) in prompts" :key="index" class="me-2" >
+                    <button class="btn mt-2" @click="setPrompt(prompt)">{{ prompt }}</button>
+                </div>
+
+            </div>
+            
             <div class="col-12">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" 
                     placeholder="Enter any question you may have about Sustainable Fashion." v-model="question" 
                     >
+                    
                     <!-- <button class="btn btn-primary mt-2" @click="fetchResponse">Send question</button> -->
                     <button class="btn mt-2" @click="fetchResponse">Send Question</button>
 
                 </div>
             </div>
+
         </div>
+
+        <div>
+            <h4 class="py-4">Commonly Asked Questions:</h4>
+            
+            <div style="background-color: rgb(45, 132, 95); " class="row mb-3 rounded p-5">
+                <div style="background-color: white;" class="mb-3 rounded p-5">
+                    <h6>Can sustainable fashion be affordable for consumers?</h6>
+                    <button id='faqbtn' class="btn mt-2" ><a href="https://allplants.com/blog/lifestyle/how-to-tell-if-a-brand-is-actually-sustainable" >Click here</a></button>
+                </div>
+
+                <div style="background-color: white;" class="mb-3 rounded p-5">
+                    <h6>How can I tell if a clothing brand is genuinely sustainable?</h6>
+                    <button id='faqbtn' class="btn mt-2"><a href="https://allplants.com/blog/lifestyle/how-to-tell-if-a-brand-is-actually-sustainable">Click here</a></button>
+                </div>
+
+                <div style="background-color: white;" class="mb-3 rounded p-5">
+                    <h6>How can I support sustainable fashion as a consumer?</h6>
+                    <button id='faqbtn' class="btn mt-2"><a href="https://www.harpersbazaar.com/uk/fashion/what-to-wear/a41158/how-to-be-sustainable-fashion/">Click here</a></button>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    
+
 </template>
 
 <style lang="css" scoped>
@@ -107,6 +164,7 @@ export default {
     overflow-y: hidden;
 
 }
+
 
 @keyframes gradient {
     0% { background-position: 100% 50%; }
@@ -136,6 +194,12 @@ export default {
   }
 } */
 
+a{
+    text-decoration: none;
+    color: black;
+    
+}
+
 p {
     height: 100px;
 }
@@ -143,6 +207,10 @@ p {
     overflow: hidden;
     overscroll-behavior-y: contain;
 } */
+
+#faqbtn {
+    float:left;
+}
 
 .btn {
     background-color: rgb(120, 215, 120);

@@ -1,6 +1,6 @@
 <template class="entirebody h-100">
     <div class="row flex-direction-column flex-direction-lg-row w-100 h-100">
-        <div class="col-12 col-lg-4 px-0 directions-info overflow-scroll" :class="{'h-100' : directionsInfoVisible}">
+        <div class="col-12 col-lg-4 px-0 directions-info overflow-scroll" :class="{'h-100' : directionsInfoVisible, 'h-25': !directionsInfoVisible}">
             <div v-if="!directionsInfoVisible">
                 <strong>Find your nearest salvation army now!</strong><br>
                 <strong>Simply click on any <span><img style="height: 40px;width:40px;" src="../assets/images/location-pin (1).png"/></span></strong>
@@ -22,7 +22,7 @@
             </div>
         </div>
         
-        <div class="col-12 col-lg-8 px-0 pt-lg-4">
+        <div class="col-12 col-lg-8 px-0 pt-lg-4"  :class="{'h-75': !directionsInfoVisible}">
             <GoogleMap id="map" v-bind:api-key='apiKey' class="h-100 pt-0" :center="coordinates" :zoom="8">
                 <CustomControl position="RIGHT">
                     <button class="custom-btn" @click="sayHi">👋</button>
@@ -289,9 +289,9 @@
     border-radius: 5px;
     position: relative;
     color:white;
-    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
     font-family: 'Lato', sans-serif;
     padding-top: 50px;
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
 
 
 }

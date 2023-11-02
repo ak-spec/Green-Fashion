@@ -41,10 +41,11 @@ export default {
     <div v-if="!loginStatus" class="row heroSection w-100">
       <div class="text-white ps-5 pe-0 gap-0 h-sm-25 col-sm-12 d-flex flex-column justify-content-start mb-4 align-items-center
       h-lg-100 col-lg-6 d-flex flex-lg-column justify-content-lg-center align-items-lg-start w-lg-50 w-sm-100">
-        <h1 class="mt-5 mb-0 mb-sm-1 mt-sm-3 text-center d-flex w-100 justify-content-sm-center justify-content-lg-start">
-          <span style="color: green;" class="">Wardrobe Refresh:</span> 
-          <span class="">Share Your Style!"</span>
-        </h1>
+        <div class="fs-1 animation-container mt-5 mb-0 mb-sm-1 mt-sm-3 text-center d-flex w-100 justify-content-center justify-content-lg-start">
+          <span style="color: green;" class="sliding-text reverse-slide">Wardrobe Refresh</span> 
+          <span class="separator">|</span>
+          <span class="sliding-text">Share Your Style!</span>
+        </div>
         <p id="description" class=" d-none d-lg-block lead fw-bold mt-4">
           Our innovative fashion web application empowers you to upstyle and elevate your wardrobe sustainably. 
           Explore curated pre-loved treasures, locate nearby Salvation Armies, and engage in real-time style consultations with our fashion experts. 
@@ -79,5 +80,34 @@ export default {
   color: green;
   text-align: justify;
   mix-blend-mode: color-burn;
+}
+
+.animation-container {
+  display: flex;
+  align-items: center;
+}
+
+.sliding-text {
+  animation: slideText 10s ease-in-out infinite;
+}
+.reverse-slide {
+  animation-direction: reverse;
+}
+.separator {
+  padding: 0 10px;
+}
+
+@keyframes slideText {
+  0% {
+    transform: translateX(100%);
+  }
+  10%, 90% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
 </style>

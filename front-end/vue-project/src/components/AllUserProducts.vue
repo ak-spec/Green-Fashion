@@ -68,7 +68,7 @@
                     <img :src="product.image" class="card-img-top fixedImgHeight" alt="img can't be loaded">
                     <div class="card-body">
                         <p class="card-text">
-                            {{ product.description > 50 ? product.description : product.description.slice(0, 50) + "..." }}<br>
+                            {{ product.description > 50 ? product.description.slice(0, 50) + "..."  :  product.description }}<br>
                             Collection Address: {{ product.address }}
                         </p>
                         <div class="row">
@@ -82,7 +82,9 @@
                             <div class="col">
                                 <button class="btn btn-sm btn-danger" @click="delistProduct(product._id)">Delist Product</button>
                             </div>
+                            
                             <div class="w-100"></div>
+
                             <div class="collapse col" :id=" 'u' + product._id">
                                 <form @submit.prevent="handleUpdateForm(product._id)">
                                     <div>

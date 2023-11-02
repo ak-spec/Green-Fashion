@@ -57,9 +57,9 @@ export default {
 
 
 <template>
-    <div class="mt-5 pt-4 chat-container container" style="overflow:scroll;">
+    <div class="mt-5 pt-4 chat-container container" >
         <h2 class="my-4">Feel free to have your queries about Sustainable Fashion typed below! </h2>
-        <div style="background-color: rgb(45, 132, 95); " class="row mb-3 rounded p-5">
+        <div style="background-color: rgb(45, 132, 95); overflow:scroll;" class="row mb-3 rounded p-5" >
             
 
             <div class="col-12" v-if="answers" v-for="(answer, index) in answers">
@@ -108,12 +108,10 @@ export default {
                 <!-- :class="{'loading-text': isLoading && index === answers.length - 1, 'pulsating': isLoading && index === answers.length - 1}" -->
 
             </div>
-            <div class="container" style="display:flex;">
-
-                <div v-for="(prompt, index) in prompts" :key="index" class="me-2" >
-                    <button class="btn mt-2" @click="setPrompt(prompt)">{{ prompt }}</button>
+            <div class="row">
+                <div class="col-4"  v-for="(prompt, index) in prompts" :key="index">
+                    <button class="btn mt-2 mx-auto w-100 h-75" @click="setPrompt(prompt)">{{ prompt }}</button>
                 </div>
-
             </div>
             
             <div class="col-12">
@@ -161,7 +159,6 @@ export default {
 <style lang="css" scoped>
 .chat-container {
     font-family: 'Lato', sans-serif;
-    height: 100vh;
     overflow-y: hidden;
 
 }

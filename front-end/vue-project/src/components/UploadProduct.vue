@@ -44,7 +44,7 @@ export default {
             axios.get(url)
             .then((res) => {
                 console.log(res.data.results)
-                if(res.data.status !== "OK" || res.data.results.length !== 1 || !res.data.results[0].types.includes("street_address")) {
+                if(res.data.status !== "OK" || res.data.results.length !== 1 || res.data.results[0].address_components.length < 3) {
                     this.errors.push("Can't resolve address!Pls give a more specific/valid one.");
                 }
                 this.addressFromGeoCodeAPI = res.data.results[0].formatted_address;

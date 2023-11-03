@@ -186,7 +186,7 @@
           params: {
             origin: `${origin.lat},${origin.lng}`,
             destination: `${destination.lat},${destination.lng}`,
-            key: "AIzaSyAMPEA8sJ9zhXSrzcwB3Z6dc5a2y2ysILk",
+            key: "AIzaSyCetI6bchmlarJQ2t7v2eAZ687rXLa2NNw",
           },
         })
         .then((response) => {
@@ -223,7 +223,7 @@
     
         data() {
             return {
-                apiKey : "AIzaSyAMPEA8sJ9zhXSrzcwB3Z6dc5a2y2ysILk", 
+                apiKey : "AIzaSyCetI6bchmlarJQ2t7v2eAZ687rXLa2NNw", 
                 coordinates : {
                     lat: 1.290270,
 		            lng: 103.851959,

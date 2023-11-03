@@ -40,10 +40,11 @@ export default {
             const address = `${this.street} ${this.city} ${this.country} ${this.postalCode}`;
             //check validity of address using geocoding API
             const encoded_address = encodeURI(address);
-            var url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encoded_address}&key=AIzaSyAr_5GqoyEDg5MldRwiEBsVwn_6vy-Wooc`
+            var url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encoded_address}&key=AIzaSyCetI6bchmlarJQ2t7v2eAZ687rXLa2NNw`
             axios.get(url)
             .then((res) => {
-                if(res.data.status !== "OK" || res.data.results.length !== 1){
+                console.log(res.data.results)
+                if(res.data.status !== "OK" || res.data.results.length !== 1 || !res.data.results[0].types.includes("street_address")) {
                     this.errors.push("Can't resolve address!Pls give a more specific/valid one.");
                 }
                 this.addressFromGeoCodeAPI = res.data.results[0].formatted_address;

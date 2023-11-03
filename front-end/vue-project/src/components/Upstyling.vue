@@ -199,9 +199,8 @@
             
                 <div class="carousel-inner">
                     <div v-for="(video, i) in videos" :key="i" :class="{ 'carousel-item': true, active: i === 0 } ">
-
-                        <div id='thumbnail' class="thumbnail d-flex justify-content-center align-items-center" style="height:300px;">
-                            <iframe :src="`https://www.youtube.com/embed/${video.id.videoId}?autoplay=0`"  style="width:50%; height:100%" frameborder="0"  allowfullscreen></iframe>
+                        <div class="thumbnail d-flex justify-content-center align-items-center">
+                            <iframe :src="`https://www.youtube.com/embed/${video.id.videoId}?autoplay=0`" width="640" height="360" frameborder="0" allowfullscreen></iframe>
                         </div>
 
                     </div>
@@ -219,8 +218,6 @@
             </div>
         </div>
     </div>
-
-
     
 
     <div class="card mx-5 mb-3 rounded" style="background-color: rgb(45, 132, 95);">

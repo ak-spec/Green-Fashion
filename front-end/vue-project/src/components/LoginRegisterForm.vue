@@ -60,7 +60,11 @@ export default {
                     this.RegisterDetails.password = "";
                     this.RegisterDetails.confirmPassword = "";
                 })
-                .catch((err) => console.log(err))
+                .catch((err) => {
+                    if(err.response.data.errMsg.includes("E11000 duplicate key error collection:")){
+                        this.RegisterDetails.errors.push("Email already exists!");
+                    }
+                })
             }
 
         },

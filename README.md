@@ -16,7 +16,7 @@
 
 ## Steps to start the app:
 
-1. clone the repo and change directory to backend and run
+1. clone the repo and change directory to backend
    -  create a .env file in the backend folder and include the following:
    ``` 
       MONGO_URL = mongodb+srv://kannappan:no3jzuG3iGufnoLK@cluster0.yfimik1.mongodb.net/WAD?retryWrites=true&w=majority
@@ -30,6 +30,7 @@
 
       OPENAI_API_KEY = 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
    ```
+   ### Run the following commands
    -  npm install
    -  node app.js
 

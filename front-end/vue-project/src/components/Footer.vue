@@ -117,7 +117,7 @@ export default {
         height: 100%;
         margin: auto;
 
-        background-image: linear-gradient(170deg, #D6BCB1, #AB8574);
+        background: linear-gradient(to right, #DFA878, #AB8574);
         background-size: 4000% 1000%;
         animation: gradient-animation 12s infinite;
         animation-timing-function: linear;

@@ -5,7 +5,7 @@
 
 
     // youtube queries from api docs
-    const API_KEY = "AIzaSyCoi2STo1PugqeawEQh_k4TBcNM2TOpUNA"
+    const API_KEY = "AIzaSyCZwx_KIKjiB_LZ7x01g8XGciYHdlQ8_QM"
     const API_KEY2 = '0269d4b3effa4914bf2a471329ff57f2'
     const part = 'snippet'
     const q =  'upcycling clothes'
@@ -124,6 +124,28 @@
 
                 })
             },
+            playVideo(videoId) {
+
+                const popupWidth = 800;
+                const popupHeight = 600;
+                const left = (window.innerWidth - popupWidth) / 2;
+                const top = (window.innerHeight - popupHeight) / 2;
+
+                // Construct the YouTube video URL with the video ID
+                const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0`;
+
+
+                const popupWindow = window.open(videoUrl, 'YouTube Popup', `width=${popupWidth}, height=${popupHeight}, left=${left}, top=${top}`);
+
+
+                // Embed the video in the popup window
+                popupWindow.document.body.innerHTML = `
+                <div style="margin: 0 auto;">
+                <iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>
+                </div>`;
+
+            }
+
 
 
         },
@@ -178,18 +200,6 @@
         
     </div>
 
-    <!--
-    <div class="row2">
-        <div v-for="video in videos">
-            <div>
-                <button type="button" class="btn btn-success" v-bind:data-youtube-id="`${video.id.videoId}`">{{video.snippet.title}}
-                <span class="thumbnail"><img v-bind:src='`${video.snippet.thumbnails.medium.url}`' width="200" height="150"></span>
-                </button>
-            </div>
-        </div>
-    </div>
-    
--->
 
     <div class="card mx-5 mb-3 rounded" style="background-color: rgb(45, 132, 95);">
         <div class="card-body">
@@ -199,8 +209,9 @@
             
                 <div class="carousel-inner">
                     <div v-for="(video, i) in videos" :key="i" :class="{ 'carousel-item': true, active: i === 0 } ">
-                        <div class="thumbnail d-flex justify-content-center align-items-center">
-                            <iframe :src="`https://www.youtube.com/embed/${video.id.videoId}?autoplay=0`" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                        <div id='thumbnail' class="thumbnail d-flex justify-content-center align-items-center video-container" style="height:300px;">
+                            <div class="play-button" @click="playVideo(video.id.videoId)">&#9658;</div>
+                            <iframe :src="`https://www.youtube.com/embed/${video.id.videoId}?autoplay=0`" style="width:50%; height:100%"  frameborder="0"  allowfullscreen></iframe>
                         </div>
 
                     </div>
@@ -347,7 +358,23 @@
         width:300px;
         height:200px;
     }
-
+    .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            border: 3px solid white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    }
+   
     
 
     .carousel-control-prev-icon, .carousel-control-next-icon {

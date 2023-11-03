@@ -121,7 +121,7 @@ export default {
                 }   
             }
             const destinationString = destinations.join("|");
-            const url =`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${this.userLocation.latitude},${this.userLocation.longitude}&destinations=${destinationString}&key=AIzaSyAr_5GqoyEDg5MldRwiEBsVwn_6vy-Wooc`
+            const url =`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${this.userLocation.latitude},${this.userLocation.longitude}&destinations=${destinationString}&key=AIzaSyCetI6bchmlarJQ2t7v2eAZ687rXLa2NNw`
             axios.get(url)
             .then((res) => {
                 console.log(res.data)

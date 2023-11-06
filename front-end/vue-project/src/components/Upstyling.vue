@@ -282,10 +282,10 @@
                         <div v-for="(story, i) in stories" :key="i">
 
                             <div v-if="i % 3 === 0" class="carousel-item" :class="{ active: i === 0 }">
-                                <div class="d-flex justify-content-around" id="card-div">
+                                <div class="d-flex flex-wrap justify-content-around" id="card-div">
                                     <div v-for="(story, j) in stories.slice(i, i + 3)" :key="j">
 
-                                        <div id='user-card' class="card" style="width: 20rem; ; height: 100%;">
+                                        <div id='user-card' class="card col-sm-4" style="width: 20rem; ; height: 100%;">
                                             <img v-bind:src="`${story.urlToImage}`" class="d-block w-100" alt="There is no image from this article." style="width: 100%; height: 200px;">
                                         
                                         <div class="card-body">

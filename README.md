@@ -1,4 +1,6 @@
-
+### Project Description
+   - The urgent need to address clothing wastage and transition towards a more sustainable and eco-conscious approach in managing clothing items is driven by the pervasive issue of clothing wastage, which not only significantly contributes to environmental pollution and waste but is also tied to a burgeoning market valuation in the fashion industry. Each year, a considerable number of individuals dispose of unused or unwanted clothing items in a wasteful manner, leading to harmful environmental consequences. This dual challenge calls for a more responsible, sustainable, and environmentally friendly solution. Furthermore, there is a notable lack of convenient and accessible methods for individuals to repurpose, reuse, and recycle their clothing within this evolving market landscape.
+   
 ## Git URL:
   - https://github.com/ak-spec/Green-Fashion.git
 

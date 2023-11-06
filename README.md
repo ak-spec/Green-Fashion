@@ -30,7 +30,7 @@
       API_SECRET = 6RfCeGVhbZ_Hov3ZNDCn5Fnh_60
 
 
-      OPENAI_API_KEY = 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
+      OPENAI_API_KEY = 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
    ```
    ### Run the following commands
    -  npm install
